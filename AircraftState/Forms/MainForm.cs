@@ -113,8 +113,10 @@ namespace AircraftState.Forms
 
         private void ButtonSend_Click(object sender, EventArgs e)
         {
-            var dataFromDb = new DbData().GetData(Title);            
-            
+            var dataFromDb = new DbData().GetData(Title);
+            bool sendFuel;
+            bool sendLocation;
+
             if (!dataFromDb.validData)
             {                
                 MessageBox.Show("No data found in db", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -130,9 +132,17 @@ namespace AircraftState.Forms
                 {
                     return;
                 }
-            }
 
-            SimConnect.SendDataToSim(dataFromDb);
+                sendFuel = sendToSimForm.sendFuel;
+                sendLocation = sendToSimForm.sendLocation;
+            }
+            else
+            {
+                sendFuel = DbSettings.Settings.SetFuel;
+                sendLocation=DbSettings.Settings.SetLocation;
+            }    
+
+            SimConnect.SendDataToSim(dataFromDb, sendFuel, sendLocation);
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)

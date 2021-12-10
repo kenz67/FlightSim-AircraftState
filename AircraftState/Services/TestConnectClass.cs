@@ -103,7 +103,7 @@ namespace AircraftState.Services
             var db = new DbData();
             db.SaveData(form.Title, data);
         }
-        public void SendDataToSim(PlaneData data)
+        public void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation)
         {
             //nothing for test mode here
         }

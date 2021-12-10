@@ -71,12 +71,12 @@
             this.labelObsObs2 = new System.Windows.Forms.Label();
             this.labelObsObs1 = new System.Windows.Forms.Label();
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
-            this.textBoxOtherParkingBrake = new System.Windows.Forms.TextBox();
             this.textBoxOtherHeadingBug = new System.Windows.Forms.TextBox();
             this.textBoxOtherKolhsman = new System.Windows.Forms.TextBox();
-            this.labelOtherParkBreak = new System.Windows.Forms.Label();
             this.labelOtherHeadingBug = new System.Windows.Forms.Label();
             this.labelOtherKohlsman = new System.Windows.Forms.Label();
+            this.textBoxOtherParkingBrake = new System.Windows.Forms.TextBox();
+            this.labelOtherParkBreak = new System.Windows.Forms.Label();
             this.buttonSend = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.labelAircraft = new System.Windows.Forms.Label();
@@ -86,6 +86,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxFlaps = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.checkBoxSendFuel = new System.Windows.Forms.CheckBox();
+            this.checkBoxSendLocation = new System.Windows.Forms.CheckBox();
             this.groupBoxRadio.SuspendLayout();
             this.groupFuel.SuspendLayout();
             this.groupLocation.SuspendLayout();
@@ -508,20 +510,12 @@
             this.groupBoxOther.Controls.Add(this.labelOtherHeadingBug);
             this.groupBoxOther.Controls.Add(this.labelOtherKohlsman);
             this.groupBoxOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxOther.Location = new System.Drawing.Point(547, 78);
+            this.groupBoxOther.Location = new System.Drawing.Point(509, 78);
             this.groupBoxOther.Name = "groupBoxOther";
             this.groupBoxOther.Size = new System.Drawing.Size(205, 107);
             this.groupBoxOther.TabIndex = 18;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "Other";
-            // 
-            // textBoxOtherParkingBrake
-            // 
-            this.textBoxOtherParkingBrake.Location = new System.Drawing.Point(100, 58);
-            this.textBoxOtherParkingBrake.Name = "textBoxOtherParkingBrake";
-            this.textBoxOtherParkingBrake.ReadOnly = true;
-            this.textBoxOtherParkingBrake.Size = new System.Drawing.Size(56, 20);
-            this.textBoxOtherParkingBrake.TabIndex = 11;
             // 
             // textBoxOtherHeadingBug
             // 
@@ -538,16 +532,6 @@
             this.textBoxOtherKolhsman.ReadOnly = true;
             this.textBoxOtherKolhsman.Size = new System.Drawing.Size(56, 20);
             this.textBoxOtherKolhsman.TabIndex = 7;
-            // 
-            // labelOtherParkBreak
-            // 
-            this.labelOtherParkBreak.AutoSize = true;
-            this.labelOtherParkBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOtherParkBreak.Location = new System.Drawing.Point(6, 58);
-            this.labelOtherParkBreak.Name = "labelOtherParkBreak";
-            this.labelOtherParkBreak.Size = new System.Drawing.Size(91, 13);
-            this.labelOtherParkBreak.TabIndex = 4;
-            this.labelOtherParkBreak.Text = "Parking Brake:";
             // 
             // labelOtherHeadingBug
             // 
@@ -568,6 +552,24 @@
             this.labelOtherKohlsman.Size = new System.Drawing.Size(65, 13);
             this.labelOtherKohlsman.TabIndex = 2;
             this.labelOtherKohlsman.Text = "Kohlsman:";
+            // 
+            // textBoxOtherParkingBrake
+            // 
+            this.textBoxOtherParkingBrake.Location = new System.Drawing.Point(100, 58);
+            this.textBoxOtherParkingBrake.Name = "textBoxOtherParkingBrake";
+            this.textBoxOtherParkingBrake.ReadOnly = true;
+            this.textBoxOtherParkingBrake.Size = new System.Drawing.Size(56, 20);
+            this.textBoxOtherParkingBrake.TabIndex = 11;
+            // 
+            // labelOtherParkBreak
+            // 
+            this.labelOtherParkBreak.AutoSize = true;
+            this.labelOtherParkBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOtherParkBreak.Location = new System.Drawing.Point(6, 58);
+            this.labelOtherParkBreak.Name = "labelOtherParkBreak";
+            this.labelOtherParkBreak.Size = new System.Drawing.Size(91, 13);
+            this.labelOtherParkBreak.TabIndex = 4;
+            this.labelOtherParkBreak.Text = "Parking Brake:";
             // 
             // buttonSend
             // 
@@ -661,6 +663,26 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Flaps:";
             // 
+            // checkBoxSendFuel
+            // 
+            this.checkBoxSendFuel.AutoSize = true;
+            this.checkBoxSendFuel.Location = new System.Drawing.Point(647, 290);
+            this.checkBoxSendFuel.Name = "checkBoxSendFuel";
+            this.checkBoxSendFuel.Size = new System.Drawing.Size(100, 17);
+            this.checkBoxSendFuel.TabIndex = 29;
+            this.checkBoxSendFuel.Text = "Send Fuel Data";
+            this.checkBoxSendFuel.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSendLocation
+            // 
+            this.checkBoxSendLocation.AutoSize = true;
+            this.checkBoxSendLocation.Location = new System.Drawing.Point(647, 316);
+            this.checkBoxSendLocation.Name = "checkBoxSendLocation";
+            this.checkBoxSendLocation.Size = new System.Drawing.Size(121, 17);
+            this.checkBoxSendLocation.TabIndex = 30;
+            this.checkBoxSendLocation.Text = "Send Location Data";
+            this.checkBoxSendLocation.UseVisualStyleBackColor = true;
+            // 
             // SendToSimForm
             // 
             this.AcceptButton = this.buttonSend;
@@ -668,6 +690,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(800, 493);
+            this.Controls.Add(this.checkBoxSendLocation);
+            this.Controls.Add(this.checkBoxSendFuel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.checkBoxHide);
             this.Controls.Add(this.buttonCancel);
@@ -759,6 +783,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxFlaps;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBoxSendFuel;
+        private System.Windows.Forms.CheckBox checkBoxSendLocation;
     }
 }
 

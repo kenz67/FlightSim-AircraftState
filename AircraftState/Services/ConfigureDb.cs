@@ -74,40 +74,6 @@ namespace AircraftState.Services
 
                 cmd.ExecuteNonQuery();
             }
-        }
-
-        private void OldCreateDataTable(SQLiteConnection conn)
-        {
-            SQLiteCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"
-                CREATE TABLE IF NOT EXISTS data (
-                    Plane VARCHAR(100) NOT NULL PRIMARY KEY,
-                    Latitude DOUBLE,
-                    Longitude DOUBLE,
-                    Altitude BIGINT,
-                    Heading DOUBLE,
-                    Com1Active DOUBLE,
-                    Com1StandBy DOUBLE,
-                    Com2Active DOUBLE,
-                    Com2StandBy DOUBLE,
-                    Nav1Active DOUBLE,
-                    Nav1StandBy DOUBLE,
-                    Nav2Active DOUBLE,
-                    Nav2StandBy DOUBLE,
-                    adfActive DOUBLE,
-                    adfStandBy DOUBLE,
-                    Obs1 DOUBLE,
-                    Obs2 DOUBLE,
-                    AdfCard DOUBLE,
-                    FuelLeft DOUBLE,
-                    FuelRight DOUBLE,
-                    FuelSelector BIGINT,
-                    ParkingBrake BOOLEAN,
-                    Kohlsman DOUBLE,
-                    HeadingBug DOUBLE
-            )";
-
-            cmd.ExecuteNonQuery();
-        }
+        }    
     }
 }

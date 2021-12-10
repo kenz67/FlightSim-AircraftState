@@ -10,6 +10,8 @@ namespace AircraftState.Forms
     public partial class SendToSimForm : Form
     {
         public bool OK = false;
+        public bool sendFuel = false;
+        public bool sendLocation = false;
 
         public SendToSimForm()
         {
@@ -18,6 +20,8 @@ namespace AircraftState.Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            checkBoxSendFuel.Checked = DbSettings.Settings.SetFuel;
+            checkBoxSendLocation.Checked = DbSettings.Settings.SetLocation;
         }
 
         public void ApplyData(string plane, PlaneData planeData)
@@ -70,6 +74,9 @@ namespace AircraftState.Forms
                 DbSettings.SaveSettings(SettingDefinitions.ShowApplyForm, false);
             }
 
+            sendFuel = checkBoxSendFuel.Checked;
+            sendLocation = checkBoxSendLocation.Checked;
+            
             this.Close();
         }
 
