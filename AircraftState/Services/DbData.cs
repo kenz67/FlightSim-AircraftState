@@ -1,4 +1,5 @@
 ﻿using AircraftState.Models;
+using Newtonsoft.Json;
 using System.Data.SQLite;
 
 namespace AircraftState.Services
@@ -6,7 +7,56 @@ namespace AircraftState.Services
     public class DbData
     {
         private const string DbName = "AircraftState.sqlite";   //todo: move this
+
         public PlaneData GetData(string plane)
+        {
+            using (var connection = new SQLiteConnection($"Data Source={DbName}"))
+            {
+                connection.Open();
+
+                using (SQLiteCommand cmd = connection.CreateCommand())
+                {
+                    cmd.Parameters.AddWithValue("@plane", plane);
+                    cmd.CommandText = @"SELECT data FROM planeData WHERE Plane = @plane";
+
+                    using (var rdr = cmd.ExecuteReader())
+                    {
+                        if (rdr.Read())
+                        {
+                            var d = rdr.GetString(0);
+                            var data = JsonConvert.DeserializeObject<PlaneData>(d);
+                            data.validData = true;
+                            return data;
+                        }
+                    }
+                }
+            }
+
+            return new PlaneData { validData = false };
+        }
+
+        public void SaveData(string plane, PlaneData data)
+        {
+            using (var connection = new SQLiteConnection($"Data Source={DbName}"))
+            {
+                connection.Open();
+
+                using (var cmd = connection.CreateCommand())
+                {
+                    cmd.Parameters.AddWithValue("@key", plane);
+                    cmd.Parameters.AddWithValue("@data", JsonConvert.SerializeObject(data));
+
+                    cmd.CommandText = "DELETE FROM planeData WHERE plane = @key";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "INSERT INTO planeData (plane, data) VALUES (@key, @data)";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        public PlaneData OldGetData(string plane)
         {
             using (var connection = new SQLiteConnection($"Data Source={DbName}"))
             {
@@ -84,7 +134,7 @@ namespace AircraftState.Services
             return new PlaneData { validData = false };
         }
 
-        public void SaveData(string plane, PlaneData Data)
+        public void OldSaveData(string plane, PlaneData Data)
         {
             using (var connection = new SQLiteConnection($"Data Source={DbName}"))
             {

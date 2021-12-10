@@ -78,7 +78,7 @@
             this.labelOtherHeadingBug = new System.Windows.Forms.Label();
             this.labelOtherKohlsman = new System.Windows.Forms.Label();
             this.buttonSend = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStripVersion = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelConnected = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonConnect = new System.Windows.Forms.Button();
             this.buttonSaveToDb = new System.Windows.Forms.Button();
@@ -96,7 +96,7 @@
             this.groupLocation.SuspendLayout();
             this.groupBoxOBS.SuspendLayout();
             this.groupBoxOther.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.statusStripVersion.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -517,7 +517,7 @@
             this.groupBoxOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxOther.Location = new System.Drawing.Point(547, 78);
             this.groupBoxOther.Name = "groupBoxOther";
-            this.groupBoxOther.Size = new System.Drawing.Size(205, 100);
+            this.groupBoxOther.Size = new System.Drawing.Size(205, 107);
             this.groupBoxOther.TabIndex = 18;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "Other";
@@ -579,7 +579,7 @@
             // buttonSend
             // 
             this.buttonSend.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonSend.Location = new System.Drawing.Point(698, 330);
+            this.buttonSend.Location = new System.Drawing.Point(649, 317);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(75, 23);
             this.buttonSend.TabIndex = 22;
@@ -587,25 +587,26 @@
             this.buttonSend.UseVisualStyleBackColor = false;
             this.buttonSend.Click += new System.EventHandler(this.ButtonSend_Click);
             // 
-            // statusStrip1
+            // statusStripVersion
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStripVersion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelConnected});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 471);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
-            this.statusStrip1.TabIndex = 23;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusStripVersion.Location = new System.Drawing.Point(0, 471);
+            this.statusStripVersion.Name = "statusStripVersion";
+            this.statusStripVersion.Size = new System.Drawing.Size(800, 22);
+            this.statusStripVersion.TabIndex = 23;
+            this.statusStripVersion.Text = "statusStrip1";
             // 
             // toolStripStatusLabelConnected
             // 
             this.toolStripStatusLabelConnected.Name = "toolStripStatusLabelConnected";
-            this.toolStripStatusLabelConnected.Size = new System.Drawing.Size(51, 17);
-            this.toolStripStatusLabelConnected.Text = "Unkown";
+            this.toolStripStatusLabelConnected.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripStatusLabelConnected.Size = new System.Drawing.Size(58, 17);
+            this.toolStripStatusLabelConnected.Text = "Unknown";
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(698, 388);
+            this.buttonConnect.Location = new System.Drawing.Point(649, 375);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(75, 23);
             this.buttonConnect.TabIndex = 25;
@@ -615,7 +616,7 @@
             // 
             // buttonSaveToDb
             // 
-            this.buttonSaveToDb.Location = new System.Drawing.Point(698, 359);
+            this.buttonSaveToDb.Location = new System.Drawing.Point(649, 346);
             this.buttonSaveToDb.Name = "buttonSaveToDb";
             this.buttonSaveToDb.Size = new System.Drawing.Size(75, 23);
             this.buttonSaveToDb.TabIndex = 26;
@@ -714,7 +715,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSaveToDb);
             this.Controls.Add(this.buttonConnect);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStripVersion);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.buttonSend);
             this.Controls.Add(this.labelAircraft);
@@ -739,8 +740,8 @@
             this.groupBoxOBS.PerformLayout();
             this.groupBoxOther.ResumeLayout(false);
             this.groupBoxOther.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.statusStripVersion.ResumeLayout(false);
+            this.statusStripVersion.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -800,7 +801,7 @@
         private System.Windows.Forms.Label labelOtherHeadingBug;
         private System.Windows.Forms.Label labelOtherKohlsman;
         private System.Windows.Forms.Button buttonSend;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStripVersion;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelConnected;
         private System.Windows.Forms.Button buttonConnect;
         private System.Windows.Forms.Button buttonSaveToDb;

@@ -99,10 +99,12 @@ namespace AircraftState.Services
                 sim.MapClientEventToSimEvent(EVENT_IDS.PARKING_BRAKE_SET, "PARKING_BRAKE_SET");
                 sim.MapClientEventToSimEvent(EVENT_IDS.HEADING_BUG_SET, "HEADING_BUG_SET");
                 sim.MapClientEventToSimEvent(EVENT_IDS.KOHLSMAN_SET, "KOHLSMAN_SET");
+                sim.MapClientEventToSimEvent(EVENT_IDS.FLAPS_UP, "FLAPS_UP");
                 sim.MapClientEventToSimEvent(EVENT_IDS.FLAPS_1, "FLAPS_1");
                 sim.MapClientEventToSimEvent(EVENT_IDS.FLAPS_2, "FLAPS_2");
                 sim.MapClientEventToSimEvent(EVENT_IDS.FLAPS_3, "FLAPS_3");
                 sim.MapClientEventToSimEvent(EVENT_IDS.FLAPS_4, "FLAPS_4");
+                sim.MapClientEventToSimEvent(EVENT_IDS.FLAPS_DOWN, "FLAPS_DOWN");
 
                 sim.MapClientEventToSimEvent(EVENT_IDS.COM_STBY_RADIO_SWAP, "COM_STBY_RADIO_SWAP");
 
@@ -160,6 +162,9 @@ namespace AircraftState.Services
             //Flaps
             switch (data.flapsIndex)
             {
+                case 0:
+                    sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.FLAPS_UP, 0, GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                    break;
                 case 1:
                     sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.FLAPS_1, 0, GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
                     break;
@@ -171,6 +176,9 @@ namespace AircraftState.Services
                     break;
                 case 4:
                     sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.FLAPS_4, 0, GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                    break;
+                default:
+                    sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.FLAPS_DOWN, 0, GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
                     break;
             }
 

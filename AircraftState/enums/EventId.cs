@@ -30,10 +30,12 @@ namespace AircraftState.enums
         PARKING_BRAKE_SET,
         HEADING_BUG_SET,
         KOHLSMAN_SET,
+        FLAPS_UP,
         FLAPS_1,
         FLAPS_2,
         FLAPS_3,
         FLAPS_4,
+        FLAPS_DOWN,
 
         COM_STBY_RADIO_SWAP,
         // Pause
