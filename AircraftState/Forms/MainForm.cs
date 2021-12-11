@@ -2,6 +2,7 @@
 using AircraftState.Services;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace AircraftState.Forms
@@ -13,15 +14,20 @@ namespace AircraftState.Forms
 
         public MainForm()
         {
+            string appDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\AircraftState";
+            if (!Directory.Exists(appDir))
+            {
+                Directory.CreateDirectory(appDir);
+            }
+
             var CreateDb = new ConfigureDb();          
 
             CreateDb.InitDb();
             InitializeComponent();
 
             // this.BackColor = Color.White;           
-
-            //SimConnect = new SimConnectService(this);
-            SimConnect = new TestConnectClass(this);                      
+            SimConnect = new SimConnectService(this);
+            //SimConnect = new TestConnectClass(this);
         }
 
         private void Form1_Load(object sender, EventArgs e)

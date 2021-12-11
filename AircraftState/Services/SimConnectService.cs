@@ -80,6 +80,7 @@ namespace AircraftState.Services
 
                 sim.OnRecvSimobjectData += new SimConnect.RecvSimobjectDataEventHandler(SimConnect_OnRecvSimobjectData);
                 sim.RequestDataOnSimObject(DATA_REQUESTS_TYPES.DataRequest, DATA_DEFINITIONS.SimPlaneDataStructure, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+                sim.RequestDataOnSimObject(DATA_REQUESTS_TYPES.SimEnvironmentReq, DATA_DEFINITIONS.SimEnvironmentDataStructure, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
                 sim.MapClientEventToSimEvent(EVENT_IDS.COM_RADIO_SET_HZ, "COM_RADIO_SET_HZ");
                 sim.MapClientEventToSimEvent(EVENT_IDS.COM_STBY_RADIO_SET_HZ, "COM_STBY_RADIO_SET_HZ");
@@ -230,17 +231,6 @@ namespace AircraftState.Services
         private uint ConvertCom(double value)
         {
             return (uint)(Math.Round(value,3) * 1000000);
-            //Byte[] Bytes = BitConverter.GetBytes(value);
-            //int result = 0;
-            //foreach (byte bcd in Bytes)
-            //{
-            //    result *= 100;
-            //    result += (10 * (bcd >> 4));
-            //    result += bcd & 0xf;
-            //}
-            //uint Param = BitConverter.ToUInt32(Bytes, 0);
-            //Param = (uint)result;
-            //return Param;
         }
 
         public void GetSimEnvInfo()

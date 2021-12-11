@@ -608,7 +608,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 13);
             this.label2.TabIndex = 23;
-            this.label2.Text = "Data will be sent to sthe Sm";
+            this.label2.Text = "Data will be sent to the Sim";
             // 
             // buttonCancel
             // 

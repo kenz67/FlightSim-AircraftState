@@ -6,8 +6,6 @@ namespace AircraftState.Services
 {
     public static class DbSettings
     {
-        private const string DbName = "AircraftState.sqlite";   //todo: move this
-
         private static Settings settings = null;
 
         public static Settings Settings { get => GetSettings(); private set => settings = value; }
@@ -26,7 +24,7 @@ namespace AircraftState.Services
         {
             settings = new Settings();
 
-            using (var connection = new SQLiteConnection($"Data Source={DbName}"))
+            using (var connection = new SQLiteConnection($"Data Source={DbCommon.DbName}"))
             {
                 connection.Open();
 
@@ -54,7 +52,7 @@ namespace AircraftState.Services
 
         public static void SaveSettings(string settingName, bool settingValue)
         {
-            using (var connection = new SQLiteConnection($"Data Source={DbName}"))
+            using (var connection = new SQLiteConnection($"Data Source={DbCommon.DbName}"))
             {
                 connection.Open();
                 SetSetting(connection, settingName, settingValue);                
@@ -65,7 +63,7 @@ namespace AircraftState.Services
 
         public static void SaveAllSettings(Settings settings)
         {
-            using (var connection = new SQLiteConnection($"Data Source={DbName}"))
+            using (var connection = new SQLiteConnection($"Data Source={DbCommon.DbName}"))
             {
                 connection.Open();
                 SetSetting(connection, SettingDefinitions.ApplyLocation, settings.SetLocation);

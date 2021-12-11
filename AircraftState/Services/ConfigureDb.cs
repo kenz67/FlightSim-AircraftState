@@ -7,17 +7,15 @@ namespace AircraftState.Services
 {
     public class ConfigureDb
     {
-        private const string DbName = "AircraftState.sqlite";
-
         public void InitDb()
         {
-            if (!File.Exists(DbName))
+            if (!File.Exists(DbCommon.DbName))
             {
-                SQLiteConnection.CreateFile(DbName);
+                SQLiteConnection.CreateFile(DbCommon.DbName);
             }
 
             //SqliteConnection.Create
-            using (var connection = new SQLiteConnection($"Data Source={DbName}"))
+            using (var connection = new SQLiteConnection($"Data Source={DbCommon.DbName}"))
             {
                 connection.Open();
 

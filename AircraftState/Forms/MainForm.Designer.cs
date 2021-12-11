@@ -71,12 +71,12 @@
             this.labelObsObs2 = new System.Windows.Forms.Label();
             this.labelObsObs1 = new System.Windows.Forms.Label();
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
-            this.textBoxOtherParkingBrake = new System.Windows.Forms.TextBox();
             this.textBoxOtherHeadingBug = new System.Windows.Forms.TextBox();
             this.textBoxOtherKolhsman = new System.Windows.Forms.TextBox();
-            this.labelOtherParkBreak = new System.Windows.Forms.Label();
             this.labelOtherHeadingBug = new System.Windows.Forms.Label();
             this.labelOtherKohlsman = new System.Windows.Forms.Label();
+            this.textBoxOtherParkingBrake = new System.Windows.Forms.TextBox();
+            this.labelOtherParkBreak = new System.Windows.Forms.Label();
             this.buttonSend = new System.Windows.Forms.Button();
             this.statusStripVersion = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelConnected = new System.Windows.Forms.ToolStripStatusLabel();
@@ -89,8 +89,9 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.textBoxFlaps = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBoxRadio.SuspendLayout();
             this.groupFuel.SuspendLayout();
             this.groupLocation.SuspendLayout();
@@ -515,20 +516,12 @@
             this.groupBoxOther.Controls.Add(this.labelOtherHeadingBug);
             this.groupBoxOther.Controls.Add(this.labelOtherKohlsman);
             this.groupBoxOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxOther.Location = new System.Drawing.Point(547, 78);
+            this.groupBoxOther.Location = new System.Drawing.Point(511, 78);
             this.groupBoxOther.Name = "groupBoxOther";
             this.groupBoxOther.Size = new System.Drawing.Size(205, 107);
             this.groupBoxOther.TabIndex = 18;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "Other";
-            // 
-            // textBoxOtherParkingBrake
-            // 
-            this.textBoxOtherParkingBrake.Location = new System.Drawing.Point(108, 55);
-            this.textBoxOtherParkingBrake.Name = "textBoxOtherParkingBrake";
-            this.textBoxOtherParkingBrake.ReadOnly = true;
-            this.textBoxOtherParkingBrake.Size = new System.Drawing.Size(56, 20);
-            this.textBoxOtherParkingBrake.TabIndex = 11;
             // 
             // textBoxOtherHeadingBug
             // 
@@ -545,16 +538,6 @@
             this.textBoxOtherKolhsman.ReadOnly = true;
             this.textBoxOtherKolhsman.Size = new System.Drawing.Size(56, 20);
             this.textBoxOtherKolhsman.TabIndex = 7;
-            // 
-            // labelOtherParkBreak
-            // 
-            this.labelOtherParkBreak.AutoSize = true;
-            this.labelOtherParkBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOtherParkBreak.Location = new System.Drawing.Point(14, 58);
-            this.labelOtherParkBreak.Name = "labelOtherParkBreak";
-            this.labelOtherParkBreak.Size = new System.Drawing.Size(91, 13);
-            this.labelOtherParkBreak.TabIndex = 4;
-            this.labelOtherParkBreak.Text = "Parking Brake:";
             // 
             // labelOtherHeadingBug
             // 
@@ -576,6 +559,24 @@
             this.labelOtherKohlsman.TabIndex = 2;
             this.labelOtherKohlsman.Text = "Kohlsman:";
             // 
+            // textBoxOtherParkingBrake
+            // 
+            this.textBoxOtherParkingBrake.Location = new System.Drawing.Point(108, 55);
+            this.textBoxOtherParkingBrake.Name = "textBoxOtherParkingBrake";
+            this.textBoxOtherParkingBrake.ReadOnly = true;
+            this.textBoxOtherParkingBrake.Size = new System.Drawing.Size(56, 20);
+            this.textBoxOtherParkingBrake.TabIndex = 11;
+            // 
+            // labelOtherParkBreak
+            // 
+            this.labelOtherParkBreak.AutoSize = true;
+            this.labelOtherParkBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOtherParkBreak.Location = new System.Drawing.Point(14, 58);
+            this.labelOtherParkBreak.Name = "labelOtherParkBreak";
+            this.labelOtherParkBreak.Size = new System.Drawing.Size(91, 13);
+            this.labelOtherParkBreak.TabIndex = 4;
+            this.labelOtherParkBreak.Text = "Parking Brake:";
+            // 
             // buttonSend
             // 
             this.buttonSend.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -591,9 +592,9 @@
             // 
             this.statusStripVersion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelConnected});
-            this.statusStripVersion.Location = new System.Drawing.Point(0, 471);
+            this.statusStripVersion.Location = new System.Drawing.Point(0, 445);
             this.statusStripVersion.Name = "statusStripVersion";
-            this.statusStripVersion.Size = new System.Drawing.Size(800, 22);
+            this.statusStripVersion.Size = new System.Drawing.Size(770, 22);
             this.statusStripVersion.TabIndex = 23;
             this.statusStripVersion.Text = "statusStrip1";
             // 
@@ -628,7 +629,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 44);
+            this.label1.Location = new System.Drawing.Point(35, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 20;
@@ -637,7 +638,7 @@
             // labelAircraft
             // 
             this.labelAircraft.AutoSize = true;
-            this.labelAircraft.Location = new System.Drawing.Point(97, 44);
+            this.labelAircraft.Location = new System.Drawing.Point(97, 42);
             this.labelAircraft.Name = "labelAircraft";
             this.labelAircraft.Size = new System.Drawing.Size(0, 13);
             this.labelAircraft.TabIndex = 21;
@@ -671,7 +672,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(770, 24);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -689,6 +690,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Plane Configuration";
             // 
+            // textBoxFlaps
+            // 
+            this.textBoxFlaps.Location = new System.Drawing.Point(107, 29);
+            this.textBoxFlaps.Name = "textBoxFlaps";
+            this.textBoxFlaps.ReadOnly = true;
+            this.textBoxFlaps.Size = new System.Drawing.Size(56, 20);
+            this.textBoxFlaps.TabIndex = 12;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -699,19 +708,22 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "Flaps:";
             // 
-            // textBoxFlaps
+            // label3
             // 
-            this.textBoxFlaps.Location = new System.Drawing.Point(107, 29);
-            this.textBoxFlaps.Name = "textBoxFlaps";
-            this.textBoxFlaps.ReadOnly = true;
-            this.textBoxFlaps.Size = new System.Drawing.Size(56, 20);
-            this.textBoxFlaps.TabIndex = 12;
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label3.Location = new System.Drawing.Point(663, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Live Data";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 493);
+            this.ClientSize = new System.Drawing.Size(770, 467);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSaveToDb);
             this.Controls.Add(this.buttonConnect);
@@ -814,6 +826,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxFlaps;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
