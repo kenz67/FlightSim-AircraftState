@@ -8,16 +8,16 @@ namespace AircraftState.Services
 {
     public class SimConnectService : ISimConnectService
     {
-        public const int WM_USER_SIMCONNECT = 0x0402;
-        private readonly MainForm fForm;
+        private readonly MainForm mainForm;
         private PlaneData planeData = new PlaneData();
-
         private SimConnect sim;
+
         public SimConnect Sim { get => sim; }
+        public const int WM_USER_SIMCONNECT = 0x0402;
 
         public SimConnectService(MainForm mainForm)
         {
-            fForm = mainForm;
+            this.mainForm = mainForm;
             ConnectToSim();
             SetupEvents();
         }
@@ -32,9 +32,11 @@ namespace AircraftState.Services
             {
                 sim.OnRecvOpen += new SimConnect.RecvOpenEventHandler(SimConnect_OnRecvOpen);
                 sim.OnRecvQuit += new SimConnect.RecvQuitEventHandler(SimConnect_OnRecvQuit);
-                //Sim.OnRecvEvent += new SimConnect.RecvEventEventHandler(SimConnect_OnRecvEvent);
+                sim.OnRecvSimobjectData += new SimConnect.RecvSimobjectDataEventHandler(SimConnect_OnRecvSimobjectData);
+                //Sim.OnRecvEvent += new SimConnect.RecvEventEventHandler(SimConnect_OnRecvEvent);  //https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/API_Reference/Events_And_Data/SimConnect_SubscribeToSystemEvent.htm
                 sim.OnRecvException += new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
 
+                //Data being captured
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "PLANE LATITUDE", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "PLANE LONGITUDE", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "PLANE ALTITUDE", "feet", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
@@ -60,28 +62,35 @@ namespace AircraftState.Services
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "AUTOPILOT HEADING LOCK DIR", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "FLAPS HANDLE INDEX", "number", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
+                //key on this to trigger db save??  //TODO
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "ELECTRICAL MASTER BATTERY", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
+                //Data beng written
+                //Fuel
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneFuelData, "FUEL TANK LEFT MAIN QUANTITY", "gallons", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneFuelData, "FUEL TANK RIGHT MAIN QUANTITY", "gallons", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
+                //Position
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneLocationData, "PLANE LATITUDE", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneLocationData, "PLANE LONGITUDE", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneLocationData, "PLANE ALTITUDE", "feet", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneLocationData, "PLANE HEADING DEGREES MAGNETIC", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
+                //Capture the name of the plane
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimEnvironmentDataStructure, "Title", null, SIMCONNECT_DATATYPE.STRING256, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
+                //Register the data structures being used
                 sim.RegisterDataDefineStruct<PlaneData>(DATA_DEFINITIONS.SimPlaneDataStructure);
                 sim.RegisterDataDefineStruct<MasterData>(DATA_DEFINITIONS.SimEnvironmentDataStructure);
                 sim.RegisterDataDefineStruct<MasterData>(DATA_DEFINITIONS.SimPlaneFuelData);
                 sim.RegisterDataDefineStruct<MasterData>(DATA_DEFINITIONS.SimPlaneLocationData);
                 sim.RegisterDataDefineStruct<MasterData>(DATA_DEFINITIONS.SimFlapsData);
 
-                sim.OnRecvSimobjectData += new SimConnect.RecvSimobjectDataEventHandler(SimConnect_OnRecvSimobjectData);
+                //Request data from sim
                 sim.RequestDataOnSimObject(DATA_REQUESTS_TYPES.DataRequest, DATA_DEFINITIONS.SimPlaneDataStructure, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
                 sim.RequestDataOnSimObject(DATA_REQUESTS_TYPES.SimEnvironmentReq, DATA_DEFINITIONS.SimEnvironmentDataStructure, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
+                //Map Events
                 sim.MapClientEventToSimEvent(EVENT_IDS.COM_RADIO_SET_HZ, "COM_RADIO_SET_HZ");
                 sim.MapClientEventToSimEvent(EVENT_IDS.COM_STBY_RADIO_SET_HZ, "COM_STBY_RADIO_SET_HZ");
                 sim.MapClientEventToSimEvent(EVENT_IDS.COM2_RADIO_SET_HZ, "COM2_RADIO_SET_HZ");
@@ -107,8 +116,6 @@ namespace AircraftState.Services
                 sim.MapClientEventToSimEvent(EVENT_IDS.FLAPS_4, "FLAPS_4");
                 sim.MapClientEventToSimEvent(EVENT_IDS.FLAPS_DOWN, "FLAPS_DOWN");
 
-                sim.MapClientEventToSimEvent(EVENT_IDS.COM_STBY_RADIO_SWAP, "COM_STBY_RADIO_SWAP");
-
                 //sim.SubscribeToSystemEvent(MY_SIMCONENCT_EVENT_IDS.Pause, "Pause");
             }
             catch /* (COMException ex) */
@@ -131,7 +138,7 @@ namespace AircraftState.Services
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.NAV2_RADIO_SET_HZ, ConvertNav(data.nav2Active), GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.NAV2_STBY_SET_HZ, ConvertNav(data.nav2Standby), GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
 
-            //ADF - note, couldn't get ADF to set, so set standby and swap
+            //ADF - note, couldn't get active ADF to set, so set standby and swap
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.ADF_STBY_SET, ConvertAdf(data.adfActive), GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.ADF1_RADIO_SWAP, 0, GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.ADF_STBY_SET, ConvertAdf(data.adfStandby), GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
@@ -176,12 +183,14 @@ namespace AircraftState.Services
                     break;
             }
 
+            //Fuel
             if (sendFuel)
             {
                 var fuelData = new FuelData { fuelLeft = data.fuelLeft, fuelRight = data.fuelRight };
                 sim.SetDataOnSimObject(DATA_DEFINITIONS.SimPlaneFuelData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, fuelData);
             }
 
+            //Location (lat/long, altitude, heading)
             if (sendLocation)
             {
                 var locationData = new LocationData { altitude = data.altitude, heading = data.heading, latitude = data.latitude, longitude = data.longitude };
@@ -189,14 +198,13 @@ namespace AircraftState.Services
             }
         }
 
-        private uint ConvertKohlsman(double value)
+        private uint ConvertCom(double value)
         {
-            var x = (uint)(value * 541.8);
-            return x;
+            return (uint)(Math.Round(value, 3) * 1000000);
         }
 
         private uint ConvertNav(double value)
-        {
+        {                                                 
             return (uint)(Math.Round(value, 2) * 1000000);
         }
 
@@ -215,7 +223,6 @@ namespace AircraftState.Services
             return Dec2Bcd((uint)(num * 100));
         }
 
-
         private static uint HornerScheme(uint Num, uint Divider, uint Factor)
         {
             uint Remainder, Quotient, Result = 0;
@@ -228,9 +235,10 @@ namespace AircraftState.Services
             return Result;
         }
 
-        private uint ConvertCom(double value)
+        private uint ConvertKohlsman(double value)
         {
-            return (uint)(Math.Round(value,3) * 1000000);
+            var x = (uint)(value * 541.8);    //couldn't figure out how to set this, calulated this value, it is close, but sometimes off by a bit
+            return x;
         }
 
         public void GetSimEnvInfo()
@@ -245,7 +253,7 @@ namespace AircraftState.Services
 
             try
             {
-                sim = new SimConnect("MainForm", fForm.Handle, WM_USER_SIMCONNECT, null, 0);
+                sim = new SimConnect("MainForm", mainForm.Handle, WM_USER_SIMCONNECT, null, 0);
                 return true;
             }
             catch /*(COMException ex)*/
@@ -265,12 +273,12 @@ namespace AircraftState.Services
                     {
                         //put logic here to save data on master batter off, make sure only once.......
                     }
-                    fForm.ShowSimDataOnForm(planeData);
+                    mainForm.ShowSimDataOnForm(planeData);
                     break;
 
                 case DATA_REQUESTS_TYPES.SimEnvironmentReq:
-                    MasterData s2 = (MasterData)data.dwData[0];
-                    fForm.ShowSimEnvironmentDataOnForm(s2);
+                    MasterData masterData = (MasterData)data.dwData[0];
+                    mainForm.ShowSimEnvironmentDataOnForm(masterData);
                     break;
 
                 default:
@@ -282,15 +290,6 @@ namespace AircraftState.Services
         //{
         //    switch ((MY_SIMCONENCT_EVENT_IDS)(data.uEventID))
         //    {
-        //        //case EVENTS.FlightPlanActivated:
-        //        //    int n = 5;
-        //        //    break;
-        //        //case EVENTS.FlightPlanDeactivated:
-        //        //    int aa = 7;
-        //        //    break;
-        //        //case EVENTS.SimStop:
-        //        //    int x = 6;
-        //        //    break;
         //        //case EVENTS.SimStart:
         //        //    int z = 7;
         //        //    break;
@@ -325,7 +324,7 @@ namespace AircraftState.Services
         public void SaveDataToDb()
         {
             var db = new DbData();
-            db.SaveData(fForm.Title, planeData);
+            db.SaveData(mainForm.Title, planeData);
         }
     }
 }
