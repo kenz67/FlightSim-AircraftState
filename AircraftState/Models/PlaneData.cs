@@ -39,7 +39,10 @@ namespace AircraftState.Models
         public double headingBug;
 
         public int flapsIndex;
-        public bool? masterBattery;
+
+        public bool masterBattery;
+        public bool masterAlternator;
+        public bool masterAvionics;
 
         //FLAPS HANDLE INDEX	//settable
         public bool validData;

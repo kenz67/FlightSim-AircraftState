@@ -1,5 +1,4 @@
 ﻿using AircraftState.enums;
-using Newtonsoft.Json;
 using System.Data.SQLite;
 using System.IO;
 
@@ -34,6 +33,7 @@ namespace AircraftState.Services
                 WITH v AS (
 	                SELECT '{SettingDefinitions.ApplyLocation}' as DataKey, 'false' as DataValue UNION
 	                SELECT '{SettingDefinitions.ApplyFuel}', 'true' UNION
+                    SELECT '{SettingDefinitions.AutoSave}', 'false' UNION
                     SELECT '{SettingDefinitions.ShowApplyForm}', 'true'
                 )
                 INSERT INTO settings (DataKey, DataValue)
@@ -60,7 +60,7 @@ namespace AircraftState.Services
         }
 
         public void CreateDataTable(SQLiteConnection conn)
-        { 
+        {
             using (var cmd = conn.CreateCommand())
             {
                 cmd.CommandText = @"
@@ -72,6 +72,6 @@ namespace AircraftState.Services
 
                 cmd.ExecuteNonQuery();
             }
-        }    
+        }
     }
 }

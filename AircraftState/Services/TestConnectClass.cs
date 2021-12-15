@@ -2,11 +2,6 @@
 using AircraftState.Models;
 using Microsoft.FlightSimulator.SimConnect;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AircraftState.Services
 {
@@ -25,7 +20,7 @@ namespace AircraftState.Services
 
         public void CloseConnection()
         {
-            return;
+            //nothing needed for test class
         }
 
         public bool Connected()
@@ -64,7 +59,7 @@ namespace AircraftState.Services
                 masterBattery = true,
                 obs1 = r.Next(0, 360),
                 obs2 = r.Next(0, 360),
-                parkingBrake = !r.Next(0,1).Equals(0)
+                parkingBrake = !r.Next(0, 1).Equals(0)
             };
 
             form.ShowSimDataOnForm(data);

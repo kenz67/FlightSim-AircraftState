@@ -20,7 +20,7 @@ namespace AircraftState.Forms
                 Directory.CreateDirectory(appDir);
             }
 
-            var CreateDb = new ConfigureDb();          
+            var CreateDb = new ConfigureDb();
 
             CreateDb.InitDb();
             InitializeComponent();
@@ -114,7 +114,7 @@ namespace AircraftState.Forms
         {
             //todo: make aircraft selection combo-box so you cacn select other planes?
             labelAircraft.Text = envData.title;
-            Title = envData.title;           
+            Title = envData.title;
         }
 
         private void ButtonSend_Click(object sender, EventArgs e)
@@ -124,11 +124,11 @@ namespace AircraftState.Forms
             bool sendLocation;
 
             if (!dataFromDb.validData)
-            {                
+            {
                 MessageBox.Show("No data found in db", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
             if (DbSettings.Settings.ShowApplyForm)
             {
                 var sendToSimForm = new SendToSimForm();
@@ -145,8 +145,8 @@ namespace AircraftState.Forms
             else
             {
                 sendFuel = DbSettings.Settings.SetFuel;
-                sendLocation=DbSettings.Settings.SetLocation;
-            }    
+                sendLocation = DbSettings.Settings.SetLocation;
+            }
 
             SimConnect.SendDataToSim(dataFromDb, sendFuel, sendLocation);
         }
@@ -177,6 +177,11 @@ namespace AircraftState.Forms
         private void ButtonSaveToDb_Click(object sender, EventArgs e)
         {
             SimConnect.SaveDataToDb();
+        }
+
+        public void ShowMessageBox(string text, string title)
+        {
+            MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

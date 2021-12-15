@@ -35,12 +35,13 @@ namespace AircraftState.Forms
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.checkBoxShowSummary = new System.Windows.Forms.CheckBox();
+            this.checkBoxAutoSave = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // checkBoxUpdatePlaneLocation
             // 
             this.checkBoxUpdatePlaneLocation.AutoSize = true;
-            this.checkBoxUpdatePlaneLocation.Location = new System.Drawing.Point(31, 46);
+            this.checkBoxUpdatePlaneLocation.Location = new System.Drawing.Point(31, 76);
             this.checkBoxUpdatePlaneLocation.Name = "checkBoxUpdatePlaneLocation";
             this.checkBoxUpdatePlaneLocation.Size = new System.Drawing.Size(135, 17);
             this.checkBoxUpdatePlaneLocation.TabIndex = 0;
@@ -51,7 +52,7 @@ namespace AircraftState.Forms
             // 
             this.checkBoxUpdateFuel.AllowDrop = true;
             this.checkBoxUpdateFuel.AutoSize = true;
-            this.checkBoxUpdateFuel.Location = new System.Drawing.Point(31, 69);
+            this.checkBoxUpdateFuel.Location = new System.Drawing.Point(31, 99);
             this.checkBoxUpdateFuel.Name = "checkBoxUpdateFuel";
             this.checkBoxUpdateFuel.Size = new System.Drawing.Size(84, 17);
             this.checkBoxUpdateFuel.TabIndex = 1;
@@ -60,7 +61,7 @@ namespace AircraftState.Forms
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(31, 116);
+            this.buttonOk.Location = new System.Drawing.Point(31, 146);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 2;
@@ -71,7 +72,7 @@ namespace AircraftState.Forms
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(141, 116);
+            this.buttonCancel.Location = new System.Drawing.Point(141, 146);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 3;
@@ -81,12 +82,23 @@ namespace AircraftState.Forms
             // 
             this.checkBoxShowSummary.AllowDrop = true;
             this.checkBoxShowSummary.AutoSize = true;
-            this.checkBoxShowSummary.Location = new System.Drawing.Point(31, 9);
+            this.checkBoxShowSummary.Location = new System.Drawing.Point(31, 14);
             this.checkBoxShowSummary.Name = "checkBoxShowSummary";
             this.checkBoxShowSummary.Size = new System.Drawing.Size(229, 17);
             this.checkBoxShowSummary.TabIndex = 4;
             this.checkBoxShowSummary.Text = "Show summary page before sending to Sim";
             this.checkBoxShowSummary.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxAutoSave
+            // 
+            this.checkBoxAutoSave.AllowDrop = true;
+            this.checkBoxAutoSave.AutoSize = true;
+            this.checkBoxAutoSave.Location = new System.Drawing.Point(31, 37);
+            this.checkBoxAutoSave.Name = "checkBoxAutoSave";
+            this.checkBoxAutoSave.Size = new System.Drawing.Size(101, 17);
+            this.checkBoxAutoSave.TabIndex = 5;
+            this.checkBoxAutoSave.Text = "Auto save to db";
+            this.checkBoxAutoSave.UseVisualStyleBackColor = false;
             // 
             // SettingForm
             // 
@@ -94,7 +106,8 @@ namespace AircraftState.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(264, 169);
+            this.ClientSize = new System.Drawing.Size(264, 191);
+            this.Controls.Add(this.checkBoxAutoSave);
             this.Controls.Add(this.checkBoxShowSummary);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
@@ -115,5 +128,6 @@ namespace AircraftState.Forms
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.CheckBox checkBoxShowSummary;
+        private System.Windows.Forms.CheckBox checkBoxAutoSave;
     }
 }

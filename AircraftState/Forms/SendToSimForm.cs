@@ -76,7 +76,7 @@ namespace AircraftState.Forms
 
             sendFuel = checkBoxSendFuel.Checked;
             sendLocation = checkBoxSendLocation.Checked;
-            
+
             this.Close();
         }
 

@@ -8,7 +8,7 @@ namespace AircraftState.enums
 {
     public enum EVENT_IDS
     {
-        NO_EVENT,        
+        NO_EVENT,
 
         COM_RADIO_SET_HZ,
         COM_STBY_RADIO_SET_HZ,

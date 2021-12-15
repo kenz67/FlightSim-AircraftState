@@ -11,6 +11,7 @@ namespace AircraftState.Services
         private readonly MainForm mainForm;
         private PlaneData planeData = new PlaneData();
         private SimConnect sim;
+        private bool sentToSim = false;
 
         public SimConnect Sim { get => sim; }
         public const int WM_USER_SIMCONNECT = 0x0402;
@@ -62,10 +63,12 @@ namespace AircraftState.Services
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "AUTOPILOT HEADING LOCK DIR", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "FLAPS HANDLE INDEX", "number", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
-                //key on this to trigger db save??  //TODO
+                //key on these to trigger db save. all 3 must be turned on together, then all 3 off together
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "ELECTRICAL MASTER BATTERY", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "GENERAL ENG MASTER ALTERNATOR", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "AVIONICS MASTER SWITCH", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
-                //Data beng written
+                //Data being written
                 //Fuel
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneFuelData, "FUEL TANK LEFT MAIN QUANTITY", "gallons", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneFuelData, "FUEL TANK RIGHT MAIN QUANTITY", "gallons", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
@@ -119,12 +122,14 @@ namespace AircraftState.Services
                 //sim.SubscribeToSystemEvent(MY_SIMCONENCT_EVENT_IDS.Pause, "Pause");
             }
             catch /* (COMException ex) */
-            {              
+            {
             }
         }
 
         public void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation)
         {
+            sentToSim = true;
+
             //COM
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.COM_RADIO_SET_HZ, ConvertCom(data.com1Standby), GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.COM_RADIO_SET_HZ, ConvertCom(data.com1Active), GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
@@ -200,12 +205,24 @@ namespace AircraftState.Services
 
         private uint ConvertCom(double value)
         {
-            return (uint)(Math.Round(value, 3) * 1000000);
+            var tmp = (uint)(Math.Round(value, 3) * 1000000);
+            if (tmp.ToString().EndsWith("9") || tmp.ToString().EndsWith("4"))
+            {
+                tmp++;
+            }
+
+            return tmp;
         }
 
         private uint ConvertNav(double value)
-        {                                                 
-            return (uint)(Math.Round(value, 2) * 1000000);
+        {
+            var tmp = (uint)(Math.Round(value, 2) * 1000000);
+            if (tmp.ToString().EndsWith("9") || tmp.ToString().EndsWith("4"))
+            {
+                tmp++;
+            }
+
+            return tmp;
         }
 
         private uint ConvertAdf(double adf)
@@ -230,7 +247,7 @@ namespace AircraftState.Services
             Quotient = Num / Divider;
 
             if (!(Quotient == 0 && Remainder == 0))
-                Result += HornerScheme(Quotient, Divider, Factor) * Factor + Remainder;
+                Result += (HornerScheme(Quotient, Divider, Factor) * Factor) + Remainder;
 
             return Result;
         }
@@ -248,9 +265,6 @@ namespace AircraftState.Services
 
         public bool ConnectToSim()
         {
-            if (sim != null)
-                return true;
-
             try
             {
                 sim = new SimConnect("MainForm", mainForm.Handle, WM_USER_SIMCONNECT, null, 0);
@@ -269,10 +283,20 @@ namespace AircraftState.Services
                 case DATA_REQUESTS_TYPES.DataRequest:
                     planeData = (PlaneData)data.dwData[0];
 
-                    if (!(planeData.masterBattery ?? true))
+                    if (planeData.masterBattery && planeData.masterAlternator && planeData.masterAvionics)
                     {
-                        //put logic here to save data on master batter off, make sure only once.......
+                        ApplicationStatic.ReadyToAutoSave = true;
                     }
+
+                    if (DbSettings.Settings.AutoSave && ApplicationStatic.ReadyToAutoSave && !planeData.masterBattery && !planeData.masterAlternator && !planeData.masterAvionics)
+                    {
+                        ApplicationStatic.ReadyToAutoSave = false;
+                        if (sentToSim)  //todo, do i want this?
+                        {
+                            SaveDataToDb();
+                        }
+                    }
+
                     mainForm.ShowSimDataOnForm(planeData);
                     break;
 
@@ -325,6 +349,9 @@ namespace AircraftState.Services
         {
             var db = new DbData();
             db.SaveData(mainForm.Title, planeData);
+            mainForm.ShowMessageBox($"Current data saved to {mainForm.Title}", "Save Data");
         }
+
+        //add option for auto save?
     }
 }

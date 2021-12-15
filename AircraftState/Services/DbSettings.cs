@@ -41,13 +41,14 @@ namespace AircraftState.Services
                                 case SettingDefinitions.ApplyLocation: settings.SetLocation = rdr.GetString(1).Equals("true"); break;
                                 case SettingDefinitions.ApplyFuel: settings.SetFuel = rdr.GetString(1).Equals("true"); break;
                                 case SettingDefinitions.ShowApplyForm: settings.ShowApplyForm = rdr.GetString(1).Equals("true"); break;
+                                case SettingDefinitions.AutoSave: settings.AutoSave = rdr.GetString(1).Equals("true"); break;
                             }
                         }
                     }
                 }
 
                 connection.Close();
-            }            
+            }
         }
 
         public static void SaveSettings(string settingName, bool settingValue)
@@ -55,7 +56,7 @@ namespace AircraftState.Services
             using (var connection = new SQLiteConnection($"Data Source={DbCommon.DbName}"))
             {
                 connection.Open();
-                SetSetting(connection, settingName, settingValue);                
+                SetSetting(connection, settingName, settingValue);
             }
 
             ReadSettings();
@@ -69,6 +70,7 @@ namespace AircraftState.Services
                 SetSetting(connection, SettingDefinitions.ApplyLocation, settings.SetLocation);
                 SetSetting(connection, SettingDefinitions.ApplyFuel, settings.SetFuel);
                 SetSetting(connection, SettingDefinitions.ShowApplyForm, settings.ShowApplyForm);
+                SetSetting(connection, SettingDefinitions.AutoSave, settings.AutoSave);
 
                 ReadSettings();
             }
@@ -77,7 +79,7 @@ namespace AircraftState.Services
         private static void SetSetting(SQLiteConnection conn, string key, bool value)
         {
             using (var cmd = new SQLiteCommand(conn))
-            {                
+            {
                 cmd.Parameters.AddWithValue("@key", key);
                 cmd.Parameters.AddWithValue("@value", value.ToString().ToLower());
                 cmd.CommandText = "UPDATE settings SET DataValue = @value WHERE DataKey = @key";
