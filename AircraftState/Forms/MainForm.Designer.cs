@@ -381,7 +381,7 @@
             // 
             this.labelHeading.AutoSize = true;
             this.labelHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHeading.Location = new System.Drawing.Point(27, 114);
+            this.labelHeading.Location = new System.Drawing.Point(5, 114);
             this.labelHeading.Name = "labelHeading";
             this.labelHeading.Size = new System.Drawing.Size(58, 13);
             this.labelHeading.TabIndex = 12;
@@ -397,25 +397,25 @@
             // 
             // textBoxLocationLat
             // 
-            this.textBoxLocationLat.Location = new System.Drawing.Point(102, 58);
+            this.textBoxLocationLat.Location = new System.Drawing.Point(79, 58);
             this.textBoxLocationLat.Name = "textBoxLocationLat";
             this.textBoxLocationLat.ReadOnly = true;
-            this.textBoxLocationLat.Size = new System.Drawing.Size(56, 20);
+            this.textBoxLocationLat.Size = new System.Drawing.Size(79, 20);
             this.textBoxLocationLat.TabIndex = 9;
             // 
             // textBoxLocationLong
             // 
-            this.textBoxLocationLong.Location = new System.Drawing.Point(102, 32);
+            this.textBoxLocationLong.Location = new System.Drawing.Point(79, 32);
             this.textBoxLocationLong.Name = "textBoxLocationLong";
             this.textBoxLocationLong.ReadOnly = true;
-            this.textBoxLocationLong.Size = new System.Drawing.Size(56, 20);
+            this.textBoxLocationLong.Size = new System.Drawing.Size(79, 20);
             this.textBoxLocationLong.TabIndex = 7;
             // 
             // labelAltitude
             // 
             this.labelAltitude.AutoSize = true;
             this.labelAltitude.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAltitude.Location = new System.Drawing.Point(28, 87);
+            this.labelAltitude.Location = new System.Drawing.Point(6, 87);
             this.labelAltitude.Name = "labelAltitude";
             this.labelAltitude.Size = new System.Drawing.Size(54, 13);
             this.labelAltitude.TabIndex = 4;
@@ -425,7 +425,7 @@
             // 
             this.labelLocationLat.AutoSize = true;
             this.labelLocationLat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLocationLat.Location = new System.Drawing.Point(27, 58);
+            this.labelLocationLat.Location = new System.Drawing.Point(5, 58);
             this.labelLocationLat.Name = "labelLocationLat";
             this.labelLocationLat.Size = new System.Drawing.Size(57, 13);
             this.labelLocationLat.TabIndex = 3;
@@ -435,7 +435,7 @@
             // 
             this.labelLocationLong.AutoSize = true;
             this.labelLocationLong.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLocationLong.Location = new System.Drawing.Point(28, 32);
+            this.labelLocationLong.Location = new System.Drawing.Point(6, 32);
             this.labelLocationLong.Name = "labelLocationLong";
             this.labelLocationLong.Size = new System.Drawing.Size(67, 13);
             this.labelLocationLong.TabIndex = 2;

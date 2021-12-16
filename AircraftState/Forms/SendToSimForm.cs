@@ -1,6 +1,7 @@
 ﻿using AircraftState.enums;
 using AircraftState.Models;
 using AircraftState.Services;
+using AircraftState.Services.Helpers;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -43,8 +44,9 @@ namespace AircraftState.Forms
             textBoxObsObs2.Text = planeData.obs2.ToString("N0");
             textBoxObsAdf.Text = planeData.adfCard.ToString("N0");
 
-            textBoxLocationLat.Text = planeData.latitude.ToString("N5");   //To convert to degrees, multiple fraction by 60
-            textBoxLocationLong.Text = planeData.longitude.ToString("N5");
+            textBoxLocationLat.Text = Formatter.GetLatLong(planeData.latitude, true);
+            textBoxLocationLong.Text = Formatter.GetLatLong(planeData.longitude, false);
+
             textBoxLocationAltitude.Text = planeData.altitude.ToString();
             textBoxLocationHeading.Text = planeData.heading.ToString("N0");
 
