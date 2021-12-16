@@ -88,6 +88,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxSendFuel = new System.Windows.Forms.CheckBox();
             this.checkBoxSendLocation = new System.Windows.Forms.CheckBox();
+            this.textBoxTrim = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBoxRadio.SuspendLayout();
             this.groupFuel.SuspendLayout();
             this.groupLocation.SuspendLayout();
@@ -284,14 +286,14 @@
             this.groupFuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupFuel.Location = new System.Drawing.Point(438, 282);
             this.groupFuel.Name = "groupFuel";
-            this.groupFuel.Size = new System.Drawing.Size(176, 127);
+            this.groupFuel.Size = new System.Drawing.Size(164, 127);
             this.groupFuel.TabIndex = 17;
             this.groupFuel.TabStop = false;
             this.groupFuel.Text = "Fuel";
             // 
             // textBoxFuelSelector
             // 
-            this.textBoxFuelSelector.Location = new System.Drawing.Point(90, 87);
+            this.textBoxFuelSelector.Location = new System.Drawing.Point(83, 92);
             this.textBoxFuelSelector.Name = "textBoxFuelSelector";
             this.textBoxFuelSelector.ReadOnly = true;
             this.textBoxFuelSelector.Size = new System.Drawing.Size(56, 20);
@@ -299,7 +301,7 @@
             // 
             // textBoxFuelRight
             // 
-            this.textBoxFuelRight.Location = new System.Drawing.Point(90, 58);
+            this.textBoxFuelRight.Location = new System.Drawing.Point(83, 66);
             this.textBoxFuelRight.Name = "textBoxFuelRight";
             this.textBoxFuelRight.ReadOnly = true;
             this.textBoxFuelRight.Size = new System.Drawing.Size(56, 20);
@@ -307,7 +309,7 @@
             // 
             // textBoxFuelLeft
             // 
-            this.textBoxFuelLeft.Location = new System.Drawing.Point(90, 32);
+            this.textBoxFuelLeft.Location = new System.Drawing.Point(83, 40);
             this.textBoxFuelLeft.Name = "textBoxFuelLeft";
             this.textBoxFuelLeft.ReadOnly = true;
             this.textBoxFuelLeft.Size = new System.Drawing.Size(56, 20);
@@ -317,7 +319,7 @@
             // 
             this.labelFuelSelector.AutoSize = true;
             this.labelFuelSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFuelSelector.Location = new System.Drawing.Point(28, 87);
+            this.labelFuelSelector.Location = new System.Drawing.Point(10, 95);
             this.labelFuelSelector.Name = "labelFuelSelector";
             this.labelFuelSelector.Size = new System.Drawing.Size(58, 13);
             this.labelFuelSelector.TabIndex = 4;
@@ -327,7 +329,7 @@
             // 
             this.labelFuelRight.AutoSize = true;
             this.labelFuelRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFuelRight.Location = new System.Drawing.Point(27, 58);
+            this.labelFuelRight.Location = new System.Drawing.Point(10, 69);
             this.labelFuelRight.Name = "labelFuelRight";
             this.labelFuelRight.Size = new System.Drawing.Size(41, 13);
             this.labelFuelRight.TabIndex = 3;
@@ -337,7 +339,7 @@
             // 
             this.labelFuelLeft.AutoSize = true;
             this.labelFuelLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFuelLeft.Location = new System.Drawing.Point(28, 32);
+            this.labelFuelLeft.Location = new System.Drawing.Point(14, 43);
             this.labelFuelLeft.Name = "labelFuelLeft";
             this.labelFuelLeft.Size = new System.Drawing.Size(33, 13);
             this.labelFuelLeft.TabIndex = 2;
@@ -442,9 +444,9 @@
             this.groupBoxOBS.Controls.Add(this.labelObsObs2);
             this.groupBoxOBS.Controls.Add(this.labelObsObs1);
             this.groupBoxOBS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxOBS.Location = new System.Drawing.Point(30, 290);
+            this.groupBoxOBS.Location = new System.Drawing.Point(30, 282);
             this.groupBoxOBS.Name = "groupBoxOBS";
-            this.groupBoxOBS.Size = new System.Drawing.Size(176, 119);
+            this.groupBoxOBS.Size = new System.Drawing.Size(176, 127);
             this.groupBoxOBS.TabIndex = 19;
             this.groupBoxOBS.TabStop = false;
             this.groupBoxOBS.Text = "OBS";
@@ -555,7 +557,7 @@
             // 
             // textBoxOtherParkingBrake
             // 
-            this.textBoxOtherParkingBrake.Location = new System.Drawing.Point(100, 58);
+            this.textBoxOtherParkingBrake.Location = new System.Drawing.Point(117, 58);
             this.textBoxOtherParkingBrake.Name = "textBoxOtherParkingBrake";
             this.textBoxOtherParkingBrake.ReadOnly = true;
             this.textBoxOtherParkingBrake.Size = new System.Drawing.Size(56, 20);
@@ -565,7 +567,7 @@
             // 
             this.labelOtherParkBreak.AutoSize = true;
             this.labelOtherParkBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOtherParkBreak.Location = new System.Drawing.Point(6, 58);
+            this.labelOtherParkBreak.Location = new System.Drawing.Point(6, 61);
             this.labelOtherParkBreak.Name = "labelOtherParkBreak";
             this.labelOtherParkBreak.Size = new System.Drawing.Size(91, 13);
             this.labelOtherParkBreak.TabIndex = 4;
@@ -606,7 +608,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(38, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 13);
+            this.label2.Size = new System.Drawing.Size(163, 13);
             this.label2.TabIndex = 23;
             this.label2.Text = "Data will be sent to the Sim";
             // 
@@ -633,21 +635,23 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.textBoxTrim);
             this.groupBox1.Controls.Add(this.textBoxOtherParkingBrake);
             this.groupBox1.Controls.Add(this.textBoxFlaps);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.labelOtherParkBreak);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(244, 290);
+            this.groupBox1.Location = new System.Drawing.Point(233, 282);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(173, 100);
+            this.groupBox1.Size = new System.Drawing.Size(188, 127);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Plane Configuration";
             // 
             // textBoxFlaps
             // 
-            this.textBoxFlaps.Location = new System.Drawing.Point(100, 32);
+            this.textBoxFlaps.Location = new System.Drawing.Point(117, 32);
             this.textBoxFlaps.Name = "textBoxFlaps";
             this.textBoxFlaps.ReadOnly = true;
             this.textBoxFlaps.Size = new System.Drawing.Size(56, 20);
@@ -682,6 +686,24 @@
             this.checkBoxSendLocation.TabIndex = 30;
             this.checkBoxSendLocation.Text = "Send Location Data";
             this.checkBoxSendLocation.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTrim
+            // 
+            this.textBoxTrim.Location = new System.Drawing.Point(117, 84);
+            this.textBoxTrim.Name = "textBoxTrim";
+            this.textBoxTrim.ReadOnly = true;
+            this.textBoxTrim.Size = new System.Drawing.Size(56, 20);
+            this.textBoxTrim.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Trim > 0, nose up:";
             // 
             // SendToSimForm
             // 
@@ -785,6 +807,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxSendFuel;
         private System.Windows.Forms.CheckBox checkBoxSendLocation;
+        private System.Windows.Forms.TextBox textBoxTrim;
+        private System.Windows.Forms.Label label4;
     }
 }
 

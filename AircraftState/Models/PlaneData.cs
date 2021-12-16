@@ -39,6 +39,7 @@ namespace AircraftState.Models
         public double headingBug;
 
         public int flapsIndex;
+        public double elevtorTrim;
 
         public bool masterBattery;
         public bool masterAlternator;

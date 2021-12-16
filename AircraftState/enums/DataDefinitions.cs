@@ -13,5 +13,6 @@ namespace AircraftState.enums
         SimPlaneFuelData,
         SimPlaneLocationData,
         SimFlapsData,
+        SimTrimData,
     }
 }

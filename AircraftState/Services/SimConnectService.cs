@@ -62,6 +62,7 @@ namespace AircraftState.Services
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "KOHLSMAN SETTING HG", "inHg", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "AUTOPILOT HEADING LOCK DIR", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "FLAPS HANDLE INDEX", "number", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "ELEVATOR TRIM POSITION", "radians", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
                 //key on these to trigger db save. all 3 must be turned on together, then all 3 off together
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "ELECTRICAL MASTER BATTERY", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
@@ -78,6 +79,9 @@ namespace AircraftState.Services
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneLocationData, "PLANE LONGITUDE", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneLocationData, "PLANE ALTITUDE", "feet", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneLocationData, "PLANE HEADING DEGREES MAGNETIC", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+
+                //Trim
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimTrimData, "ELEVATOR TRIM POSITION", "radians", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
                 //Capture the name of the plane
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimEnvironmentDataStructure, "Title", null, SIMCONNECT_DATATYPE.STRING256, 0.0f, SimConnect.SIMCONNECT_UNUSED);
@@ -188,6 +192,8 @@ namespace AircraftState.Services
                     break;
             }
 
+            //Udateable variables
+
             //Fuel
             if (sendFuel)
             {
@@ -200,7 +206,16 @@ namespace AircraftState.Services
             {
                 var locationData = new LocationData { altitude = data.altitude, heading = data.heading, latitude = data.latitude, longitude = data.longitude };
                 sim.SetDataOnSimObject(DATA_DEFINITIONS.SimPlaneLocationData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, locationData);
+            }            //Fuel
+            if (sendFuel)
+            {
+                var fuelData = new FuelData { fuelLeft = data.fuelLeft, fuelRight = data.fuelRight };
+                sim.SetDataOnSimObject(DATA_DEFINITIONS.SimPlaneFuelData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, fuelData);
             }
+
+            //Trim
+                var trimData = new TrimData { elevatorTrim = data.elevtorTrim };
+                sim.SetDataOnSimObject(DATA_DEFINITIONS.SimTrimData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, trimData);
         }
 
         private uint ConvertCom(double value)

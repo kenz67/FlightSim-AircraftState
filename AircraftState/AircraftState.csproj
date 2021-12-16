@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\ApplicationStatic.cs" />
+    <Compile Include="Models\TrimData.cs" />
     <Compile Include="Models\LocationData.cs" />
     <Compile Include="Models\MasterData.cs" />
     <Compile Include="Models\FuelData.cs" />

@@ -63,6 +63,7 @@ namespace AircraftState.Forms
             textBoxOtherKolhsman.Text = planeData.kohlsman.ToString("N2");
             textBoxOtherHeadingBug.Text = planeData.headingBug.ToString();
             textBoxFlaps.Text = planeData.flapsIndex.ToString();
+            textBoxTrim.Text = planeData.elevtorTrim.ToString("N2");
         }
 
         private void ButtonSend_Click(object sender, EventArgs e)

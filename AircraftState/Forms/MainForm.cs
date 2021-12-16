@@ -103,6 +103,7 @@ namespace AircraftState.Forms
             textBoxOtherHeadingBug.Text = planeData.headingBug.ToString();
 
             textBoxFlaps.Text = planeData.flapsIndex.ToString();
+            textBoxTrim.Text = planeData.elevtorTrim.ToString("N2");
 
             if (string.IsNullOrEmpty(Title))
             {
