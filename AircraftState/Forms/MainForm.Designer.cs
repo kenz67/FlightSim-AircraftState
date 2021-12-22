@@ -94,6 +94,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxTrim = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.toolStripStatusAutoSave = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBoxRadio.SuspendLayout();
             this.groupFuel.SuspendLayout();
             this.groupLocation.SuspendLayout();
@@ -593,7 +594,8 @@
             // statusStripVersion
             // 
             this.statusStripVersion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelConnected});
+            this.toolStripStatusLabelConnected,
+            this.toolStripStatusAutoSave});
             this.statusStripVersion.Location = new System.Drawing.Point(0, 445);
             this.statusStripVersion.Name = "statusStripVersion";
             this.statusStripVersion.Size = new System.Drawing.Size(770, 22);
@@ -724,11 +726,12 @@
             // 
             // textBoxTrim
             // 
-            this.textBoxTrim.Location = new System.Drawing.Point(122, 90);
+            this.textBoxTrim.Location = new System.Drawing.Point(75, 90);
             this.textBoxTrim.Name = "textBoxTrim";
             this.textBoxTrim.ReadOnly = true;
-            this.textBoxTrim.Size = new System.Drawing.Size(56, 20);
+            this.textBoxTrim.Size = new System.Drawing.Size(103, 20);
             this.textBoxTrim.TabIndex = 14;
+            this.textBoxTrim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
             // 
@@ -736,9 +739,16 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(6, 93);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 13);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Trim > 0, nose up:";
+            this.label4.Text = "Trim:";
+            // 
+            // toolStripStatusAutoSave
+            // 
+            this.toolStripStatusAutoSave.Name = "toolStripStatusAutoSave";
+            this.toolStripStatusAutoSave.Size = new System.Drawing.Size(697, 17);
+            this.toolStripStatusAutoSave.Spring = true;
+            this.toolStripStatusAutoSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MainForm
             // 
@@ -851,6 +861,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxTrim;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusAutoSave;
     }
 }
 

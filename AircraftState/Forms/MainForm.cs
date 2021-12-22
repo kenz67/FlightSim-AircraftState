@@ -83,7 +83,7 @@ namespace AircraftState.Forms
             textBoxObsObs2.Text = planeData.obs2.ToString("N0");
             textBoxObsAdf.Text = planeData.adfCard.ToString("N0");
 
-            textBoxLocationLat.Text = Formatter.GetLatLong(planeData.latitude, true); 
+            textBoxLocationLat.Text = Formatter.GetLatLong(planeData.latitude, true);
             textBoxLocationLong.Text = Formatter.GetLatLong(planeData.longitude, false);
             textBoxLocationAltitude.Text = planeData.altitude.ToString();
             textBoxLocationHeading.Text = planeData.heading.ToString("N0");
@@ -104,11 +104,21 @@ namespace AircraftState.Forms
             textBoxOtherHeadingBug.Text = planeData.headingBug.ToString();
 
             textBoxFlaps.Text = planeData.flapsIndex.ToString();
-            textBoxTrim.Text = planeData.elevtorTrim.ToString("N2");
+
+            textBoxTrim.Text = $"{Math.Abs(planeData.elevtorTrim):N2} {(Math.Round(planeData.elevtorTrim, 2) > 0 ? "Nose Up" : Math.Round(planeData.elevtorTrim, 2) >= 0 ? string.Empty : "Nose Down")}";
 
             if (string.IsNullOrEmpty(Title))
             {
                 SimConnect.GetSimEnvInfo();
+            }
+
+            if (ApplicationStatic.ReadyToAutoSave)
+            {
+                toolStripStatusAutoSave.Text = "Autosave";
+            }
+            else
+            {
+                toolStripStatusAutoSave.Text = string.Empty;
             }
         }
 

@@ -298,7 +298,7 @@ namespace AircraftState.Services
                 case DATA_REQUESTS_TYPES.DataRequest:
                     planeData = (PlaneData)data.dwData[0];
 
-                    if (planeData.masterBattery && planeData.masterAlternator && planeData.masterAvionics)
+                    if (planeData.masterBattery && planeData.masterAlternator && planeData.masterAvionics && sentToSim)
                     {
                         ApplicationStatic.ReadyToAutoSave = true;
                     }

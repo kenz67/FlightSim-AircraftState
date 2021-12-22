@@ -65,7 +65,7 @@ namespace AircraftState.Forms
             textBoxOtherKolhsman.Text = planeData.kohlsman.ToString("N2");
             textBoxOtherHeadingBug.Text = planeData.headingBug.ToString();
             textBoxFlaps.Text = planeData.flapsIndex.ToString();
-            textBoxTrim.Text = planeData.elevtorTrim.ToString("N2");
+            textBoxTrim.Text = $"{Math.Abs(planeData.elevtorTrim):N2} {(Math.Round(planeData.elevtorTrim, 2) > 0 ? "Nose Up" : (Math.Round(planeData.elevtorTrim, 2) < 0 ? "Nose Down" : String.Empty))}";
         }
 
         private void ButtonSend_Click(object sender, EventArgs e)

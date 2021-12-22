@@ -84,12 +84,12 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.checkBoxHide = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxTrim = new System.Windows.Forms.TextBox();
             this.textBoxFlaps = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxSendFuel = new System.Windows.Forms.CheckBox();
             this.checkBoxSendLocation = new System.Windows.Forms.CheckBox();
-            this.textBoxTrim = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBoxRadio.SuspendLayout();
             this.groupFuel.SuspendLayout();
             this.groupLocation.SuspendLayout();
@@ -649,6 +649,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Plane Configuration";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Trim:";
+            // 
+            // textBoxTrim
+            // 
+            this.textBoxTrim.Location = new System.Drawing.Point(75, 84);
+            this.textBoxTrim.Name = "textBoxTrim";
+            this.textBoxTrim.ReadOnly = true;
+            this.textBoxTrim.Size = new System.Drawing.Size(98, 20);
+            this.textBoxTrim.TabIndex = 16;
+            // 
             // textBoxFlaps
             // 
             this.textBoxFlaps.Location = new System.Drawing.Point(117, 32);
@@ -686,24 +704,6 @@
             this.checkBoxSendLocation.TabIndex = 30;
             this.checkBoxSendLocation.Text = "Send Location Data";
             this.checkBoxSendLocation.UseVisualStyleBackColor = true;
-            // 
-            // textBoxTrim
-            // 
-            this.textBoxTrim.Location = new System.Drawing.Point(117, 84);
-            this.textBoxTrim.Name = "textBoxTrim";
-            this.textBoxTrim.ReadOnly = true;
-            this.textBoxTrim.Size = new System.Drawing.Size(56, 20);
-            this.textBoxTrim.TabIndex = 16;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 86);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 13);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Trim > 0, nose up:";
             // 
             // SendToSimForm
             // 
