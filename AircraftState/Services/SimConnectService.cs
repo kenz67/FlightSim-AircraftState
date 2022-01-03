@@ -19,8 +19,7 @@ namespace AircraftState.Services
         public SimConnectService(MainForm mainForm)
         {
             this.mainForm = mainForm;
-            ConnectToSim();
-            SetupEvents();
+            ConnectToSim();            
         }
 
         public bool Connected()
@@ -283,12 +282,13 @@ namespace AircraftState.Services
             try
             {
                 sim = new SimConnect("MainForm", mainForm.Handle, WM_USER_SIMCONNECT, null, 0);
+                SetupEvents();
                 return true;
             }
             catch /*(COMException ex)*/
             {
                 return false;
-            }
+            }            
         }
 
         private void SimConnect_OnRecvSimobjectData(SimConnect sender, SIMCONNECT_RECV_SIMOBJECT_DATA data)
@@ -298,12 +298,12 @@ namespace AircraftState.Services
                 case DATA_REQUESTS_TYPES.DataRequest:
                     planeData = (PlaneData)data.dwData[0];
 
-                    if (planeData.masterBattery && planeData.masterAlternator && planeData.masterAvionics && sentToSim)
+                    if (DbSettings.Settings.AutoSave && planeData.masterBattery && sentToSim)
                     {
                         ApplicationStatic.ReadyToAutoSave = true;
                     }
 
-                    if (DbSettings.Settings.AutoSave && ApplicationStatic.ReadyToAutoSave && !planeData.masterBattery && !planeData.masterAlternator && !planeData.masterAvionics)
+                    if (DbSettings.Settings.AutoSave && ApplicationStatic.ReadyToAutoSave && !planeData.masterBattery)
                     {
                         ApplicationStatic.ReadyToAutoSave = false;
                         if (sentToSim)  //todo, do i want this?
@@ -362,9 +362,16 @@ namespace AircraftState.Services
 
         public void SaveDataToDb()
         {
-            var db = new DbData();
-            db.SaveData(mainForm.Title, planeData);
-            mainForm.ShowMessageBox($"Current data saved to {mainForm.Title}", "Save Data");
+            if (planeData.com1Active.Equals(124.850) && planeData.com1Standby.Equals(124.85))
+            {
+                mainForm.ShowMessageBox("Default data not saved!", "Save Data");
+            }
+            else
+            {
+                var db = new DbData();
+                db.SaveData(mainForm.Title, planeData);
+                mainForm.ShowMessageBox($"Current data saved to {mainForm.Title}", "Save Data");
+            }
         }
 
         //add option for auto save?
