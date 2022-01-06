@@ -105,7 +105,8 @@ namespace AircraftState.Forms
 
             textBoxFlaps.Text = planeData.flapsIndex.ToString();
 
-            textBoxTrim.Text = $"{Math.Abs(planeData.elevtorTrim):N3} {(Math.Round(planeData.elevtorTrim, 3) > 0 ? "Nose Up" : Math.Round(planeData.elevtorTrim, 3) >= 0 ? string.Empty : "Nose Down")}";
+            var noseDown = Math.Round(planeData.elevtorTrim, 3) >= 0 ? string.Empty : "Nose Down";
+            textBoxTrim.Text = $"{Math.Abs(planeData.elevtorTrim):N3} {(Math.Round(planeData.elevtorTrim, 3) > 0 ? "Nose Up" : noseDown) }";
 
             if (string.IsNullOrEmpty(Title))
             {
