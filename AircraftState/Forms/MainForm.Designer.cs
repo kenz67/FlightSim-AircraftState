@@ -80,6 +80,7 @@
             this.buttonSend = new System.Windows.Forms.Button();
             this.statusStripVersion = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelConnected = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusAutoSave = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonConnect = new System.Windows.Forms.Button();
             this.buttonSaveToDb = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -89,12 +90,12 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxTrim = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.textBoxFlaps = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxTrim = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.toolStripStatusAutoSave = new System.Windows.Forms.ToolStripStatusLabel();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxRadio.SuspendLayout();
             this.groupFuel.SuspendLayout();
             this.groupLocation.SuspendLayout();
@@ -609,6 +610,13 @@
             this.toolStripStatusLabelConnected.Size = new System.Drawing.Size(58, 17);
             this.toolStripStatusLabelConnected.Text = "Unknown";
             // 
+            // toolStripStatusAutoSave
+            // 
+            this.toolStripStatusAutoSave.Name = "toolStripStatusAutoSave";
+            this.toolStripStatusAutoSave.Size = new System.Drawing.Size(697, 17);
+            this.toolStripStatusAutoSave.Spring = true;
+            this.toolStripStatusAutoSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // buttonConnect
             // 
             this.buttonConnect.Location = new System.Drawing.Point(649, 375);
@@ -659,21 +667,22 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(770, 24);
@@ -695,6 +704,25 @@
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Plane Configuration";
+            // 
+            // textBoxTrim
+            // 
+            this.textBoxTrim.Location = new System.Drawing.Point(75, 90);
+            this.textBoxTrim.Name = "textBoxTrim";
+            this.textBoxTrim.ReadOnly = true;
+            this.textBoxTrim.Size = new System.Drawing.Size(103, 20);
+            this.textBoxTrim.TabIndex = 14;
+            this.textBoxTrim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 93);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Trim:";
             // 
             // textBoxFlaps
             // 
@@ -724,31 +752,12 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Live Data";
             // 
-            // textBoxTrim
+            // helpToolStripMenuItem
             // 
-            this.textBoxTrim.Location = new System.Drawing.Point(75, 90);
-            this.textBoxTrim.Name = "textBoxTrim";
-            this.textBoxTrim.ReadOnly = true;
-            this.textBoxTrim.Size = new System.Drawing.Size(103, 20);
-            this.textBoxTrim.TabIndex = 14;
-            this.textBoxTrim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 93);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Trim:";
-            // 
-            // toolStripStatusAutoSave
-            // 
-            this.toolStripStatusAutoSave.Name = "toolStripStatusAutoSave";
-            this.toolStripStatusAutoSave.Size = new System.Drawing.Size(697, 17);
-            this.toolStripStatusAutoSave.Spring = true;
-            this.toolStripStatusAutoSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -862,6 +871,7 @@
         private System.Windows.Forms.TextBox textBoxTrim;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusAutoSave;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
     }
 }
 

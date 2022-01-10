@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        .ul.cols2 {
+            columns: 2;
+            -webkit-columns: 2;
+            -moz-columns: 2;
+        }
+
+        ul.no-bullets {
+            list-style-type: none; /* Remove bullets */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margins */
+        }
+    </style>
+
+    <meta charset="utf-8" />
+    <title>Aircraft State</title>
+</head>
+<body>
+    <h1>Introduction</h1>
+    This application was created to save the state of an aircraft in MSFS 2020 in order for it to be restored for the next flight allowing the user to begin where they left off.   It will capture and reset the following data:<br /><br />
+
+    The data will be saved for each plane as defined by the plane Title from the aircraft.cfg file.  The title as found will be displaed in the upper left of the main page.
+
+    <ul class="cols2">
+        <li>Com 1 and 2, Active and Standby frequencies</li>
+        <li>Nav 1 and 2, Active and Standby frequencies</li>
+        <li>Adf Active and Standby frequencies</li>
+        <li>OBS 1 and 2 setting</li>
+        <li>ADR Card Setting</li>
+        <li>Fuel amount (gallons) in left and righ tanks</li>
+        <li>Fuel Selector switch setting</li>
+        <li>Trim Setting</li>
+        <li>Aircraft Location (Lat/Long)</li>
+        <li>Acraft Alititude</li>
+        <li>Acraft Heading</li>
+        <li>Kohlsman (Barometer) Setting</li>
+        <li>Heading Bug Indicator</li>
+        <li>Flaps configuration</li>
+        <li>Parking Break On/Off</li>
+    </ul>
+
+    <h1>Controls</h1>
+
+    <button>Send</button>  This button will send the data from the previous flight to the simulator<br /><br />
+    <button>Save to Db</button>  This button will save the current data for later use<br /><br />
+    <button>Connect</button>  If connection to the Sim is lost, this will reconnect.   Connection status can be seen in the status bar.
+
+    <h1>Settings</h1>
+
+    <ul>
+        <li>
+            Show summary page before sending to sim
+            <ul class="no-bullets"><li>If checked, a summary of what will be sent to the sim will be shown before it is sent.  This page gives the user the chance to override what is sent.</li></ul>
+        </li>
+        <li>
+            Auto save to db
+            <ul class="no-bullets"><li>If checked, the application will automatically save the data for the current flight to the database.  The data will be saved when the master battery switch is turned off and settings have been sent to the sim.</li></ul>
+        </li>
+        <li>
+            Update Plane Location
+            <ul class="no-bullets"><li>If checked, the plane will be moved to the previous location.  Note that this could end up with the plane sharing a parking spot with an AI generated plane.</li></ul>
+        </li>
+        <li>
+            Update Fuel
+            <ul class="no-bullets"><li>If checked, current fuel levels will be updated in the sim.  This could cause problems with Career Mode, such as FS Economy which also want to set the fuel levels.</li></ul>
+        </li>
+    </ul>
+
+    <h1>Send to Sim</h1>
+    The send to sim window will show the values the will be sent to the sim.  There is also an option to override the default values for sending Location and Fuel to the sim.
+
+    <h1>Notes</h1>
+    I wrote this application for my own use as I like to continue my flights from one place to another with different planes on different routes as well as to learn the SimConnect interface.   If time permits or I move into more complex aircraft I may add more data, but I don't have a lot of free time and prefer to spend it flying rather than coding.  Even in its current limited state, I have found it very useful and thought others might as well.
+
+    I have a home cockpit which has controls such as throttle quandrant, lights, fuel pump, etc. so none of this type of information is stored.  The application has been tested with the Steam Version of the Cessna 172 and the 	plane
+    Bonanza G36.  It should work with any GA aircraft without issues.  I do not fly airliners and no testing has been done in this area, but for the given data, it should work.
+    <br /><br />
+    A bonus use I have found is after a Sim Crash.   The application will contain the last configuration as of the crash allowing the user to click the Save to Db button.  Once the sim is restarted, sending data to the sim will allow you to restart from the same place.  If on an IFR flight plan, you usually have to request flight following, then you can reopen your flight plan.
+</body>
+</html>

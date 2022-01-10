@@ -122,6 +122,12 @@
     <Compile Include="enums\DataRequestTypes.cs" />
     <Compile Include="enums\EventId.cs" />
     <Compile Include="enums\GroupId.cs" />
+    <Compile Include="Forms\Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SendToSimForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     <Compile Include="Services\ISimConnectService.cs" />
     <Compile Include="Services\SimConnectService.cs" />
     <Compile Include="Services\TestConnectClass.cs" />
+    <EmbeddedResource Include="Forms\Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SendToSimForm.resx">
       <DependentUpon>SendToSimForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,8 +204,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Doc\Help.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Properties\wirelizard-Top-down-Airplane-View.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.6\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.6\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

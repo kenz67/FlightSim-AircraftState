@@ -19,7 +19,7 @@ namespace AircraftState.Services
         public SimConnectService(MainForm mainForm)
         {
             this.mainForm = mainForm;
-            ConnectToSim();            
+            ConnectToSim();
         }
 
         public bool Connected()
@@ -213,8 +213,8 @@ namespace AircraftState.Services
             }
 
             //Trim
-                var trimData = new TrimData { elevatorTrim = data.elevtorTrim };
-                sim.SetDataOnSimObject(DATA_DEFINITIONS.SimTrimData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, trimData);
+            var trimData = new TrimData { elevatorTrim = data.elevtorTrim };
+            sim.SetDataOnSimObject(DATA_DEFINITIONS.SimTrimData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, trimData);
         }
 
         private uint ConvertCom(double value)
@@ -288,7 +288,7 @@ namespace AircraftState.Services
             catch /*(COMException ex)*/
             {
                 return false;
-            }            
+            }
         }
 
         private void SimConnect_OnRecvSimobjectData(SimConnect sender, SIMCONNECT_RECV_SIMOBJECT_DATA data)

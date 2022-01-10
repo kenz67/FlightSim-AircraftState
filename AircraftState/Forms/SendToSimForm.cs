@@ -3,16 +3,15 @@ using AircraftState.Models;
 using AircraftState.Services;
 using AircraftState.Services.Helpers;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace AircraftState.Forms
 {
     public partial class SendToSimForm : Form
     {
-        public bool OK = false;
-        public bool sendFuel = false;
-        public bool sendLocation = false;
+        public bool OK { get; set; }
+        public bool SendFuel { get; set; }
+        public bool SendLocation { get; set; }
 
         public SendToSimForm()
         {
@@ -65,7 +64,8 @@ namespace AircraftState.Forms
             textBoxOtherKolhsman.Text = planeData.kohlsman.ToString("N2");
             textBoxOtherHeadingBug.Text = planeData.headingBug.ToString();
             textBoxFlaps.Text = planeData.flapsIndex.ToString();
-            textBoxTrim.Text = $"{Math.Abs(planeData.elevtorTrim):N2} {(Math.Round(planeData.elevtorTrim, 2) > 0 ? "Nose Up" : (Math.Round(planeData.elevtorTrim, 2) < 0 ? "Nose Down" : String.Empty))}";
+            var nodeDown = Math.Round(planeData.elevtorTrim, 2) < 0 ? "Nose Down" : String.Empty;
+            textBoxTrim.Text = $"{Math.Abs(planeData.elevtorTrim):N2} {(Math.Round(planeData.elevtorTrim, 2) > 0 ? "Nose Up" : nodeDown)}";
         }
 
         private void ButtonSend_Click(object sender, EventArgs e)
@@ -77,8 +77,8 @@ namespace AircraftState.Forms
                 DbSettings.SaveSettings(SettingDefinitions.ShowApplyForm, false);
             }
 
-            sendFuel = checkBoxSendFuel.Checked;
-            sendLocation = checkBoxSendLocation.Checked;
+            SendFuel = checkBoxSendFuel.Checked;
+            SendLocation = checkBoxSendLocation.Checked;
 
             this.Close();
         }

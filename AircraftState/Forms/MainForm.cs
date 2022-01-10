@@ -152,8 +152,8 @@ namespace AircraftState.Forms
                     return;
                 }
 
-                sendFuel = sendToSimForm.sendFuel;
-                sendLocation = sendToSimForm.sendLocation;
+                sendFuel = sendToSimForm.SendFuel;
+                sendLocation = sendToSimForm.SendLocation;
             }
             else
             {
@@ -195,6 +195,12 @@ namespace AircraftState.Forms
         public void ShowMessageBox(string text, string title)
         {
             MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var helpDialog = new Help();
+            helpDialog.ShowDialog();
         }
     }
 }
