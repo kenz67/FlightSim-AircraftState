@@ -26,7 +26,7 @@ namespace AircraftState.Forms
             CreateDb.InitDb();
             InitializeComponent();
 
-            // this.BackColor = Color.White;           
+            // this.BackColor = Color.White;
             SimConnect = new SimConnectService(this);
             //SimConnect = new TestConnectClass(this);
         }

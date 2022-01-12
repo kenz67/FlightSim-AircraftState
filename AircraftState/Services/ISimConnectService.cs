@@ -8,11 +8,15 @@ namespace AircraftState.Services
         SimConnect Sim { get; }
 
         void CloseConnection();
+
         bool Connected();
+
         bool ConnectToSim();
+
         void GetSimEnvInfo();
 
         void SaveDataToDb();
+
         void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation);
     }
 }
