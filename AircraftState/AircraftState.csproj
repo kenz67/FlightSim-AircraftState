@@ -198,11 +198,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Doc\Help.html">
+    <Content Include="docs\Help.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Doc\MainPage.png" />
-    <Content Include="Doc\SendToSim.png" />
+    <Content Include="docs\MainPage.png" />
+    <Content Include="docs\SendToSim.png" />
     <Content Include="Properties\wirelizard-Top-down-Airplane-View.ico" />
   </ItemGroup>
   <ItemGroup>

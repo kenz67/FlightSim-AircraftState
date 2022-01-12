@@ -14,14 +14,14 @@ Read and save MSFS aircraft state and apply to next flight
 
 See manual here:
 
-[Documentation](https://htmlpreview.github.io/?https://raw.githubusercontent.com/kenz67/FlightSim-AircraftState/master/AircraftState/Doc/Help.html)
+[Documentation](https://htmlpreview.github.io/?https://raw.githubusercontent.com/kenz67/FlightSim-AircraftState/master/AircraftState/docs/Help.html)
 
 
 ## Screenshots
 
-![Main Page](https://raw.githubusercontent.com/kenz67/FlightSim-AircraftState/master/AircraftState/Doc/MainPage.png)
+![Main Page](https://raw.githubusercontent.com/kenz67/FlightSim-AircraftState/master/AircraftState/docs/MainPage.png)
 
-![Send To Sim Page](https://raw.githubusercontent.com/kenz67/FlightSim-AircraftState/master/AircraftState/Doc/SendToSim.png)
+![Send To Sim Page](https://raw.githubusercontent.com/kenz67/FlightSim-AircraftState/master/AircraftState/docs/SendToSim.png)
 ## Installation
 
 To deploy this project unzip to any location and execute AircraftState.exe 

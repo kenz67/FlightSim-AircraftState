@@ -44,7 +44,7 @@ namespace AircraftState.Forms
             this.webBrowser1.Size = new System.Drawing.Size(800, 450);
             this.webBrowser1.TabIndex = 0;
             string curDir = Directory.GetCurrentDirectory();
-            this.webBrowser1.Url = new Uri(String.Format("file:///{0}/Doc/Help.html", curDir));
+            this.webBrowser1.Url = new Uri(String.Format("file:///{0}/docs/Help.html", curDir));
             // 
             // Help
             // 
