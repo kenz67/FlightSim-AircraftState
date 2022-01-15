@@ -32,7 +32,7 @@ To deploy this project unzip to any location and execute AircraftState.exe
 
 
 ## 🚀 About Me
-I'm a full stack developer with over 30 years experience.  I used to use older version of Micrsoft Flight Simulator (up to FS9) before taking a long break from the hobby.
+I'm a full stack developer with over 30 years experience.  I used older versions of Micrsoft Flight Simulator (up to FS9) before taking a long break from the hobby.
 
 I was drawn back when MSFS2020 came out and have since build a small home cockpit with a mixture of home built button boxes and store bought components.
 
