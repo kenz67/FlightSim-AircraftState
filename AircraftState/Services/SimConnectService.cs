@@ -247,7 +247,7 @@ namespace AircraftState.Services
 
         private uint ConvertAdf(double adf)
         {
-            return Dec2Bcd(adf * 100000);
+            return Dec2Bcd(Math.Round(adf,4) * 100000);
         }
 
         public static uint Dec2Bcd(uint num)
