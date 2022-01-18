@@ -2,6 +2,7 @@
 using AircraftState.Services;
 using AircraftState.Services.Helpers;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -14,7 +15,7 @@ namespace AircraftState.Forms
         public string Title { get; set; } = string.Empty;
 
         public MainForm()
-        {
+        {            
             string appDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\AircraftState";
             if (!Directory.Exists(appDir))
             {
@@ -36,6 +37,14 @@ namespace AircraftState.Forms
             toolStripStatusLabelConnected.Text = "Not connected to sim";
             toolStripStatusLabelConnected.BackColor = Color.Red;
             toolStripStatusLabelConnected.ForeColor = Color.White;
+            
+            this.Text = $"Aircraft State - {Application.ProductVersion}";
+
+            // calculate when build was done
+            //var days = int.Parse(Application.ProductVersion.Split('.')[2]);
+            //var seconds = int.Parse(Application.ProductVersion.Split('.')[3]) * 2;
+            //var builddate = DateTime.Parse("2000-01-01T00:00:00").AddDays(days).ToShortDateString();
+            //var buildtime = DateTime.Now.Subtract(DateTime.Now.TimeOfDay).AddSeconds(seconds).ToShortTimeString();      
         }
 
         protected override void DefWndProc(ref Message m)
