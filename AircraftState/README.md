@@ -12,7 +12,7 @@ Read and save MSFS aircraft state and apply to next flight
 
 ## Documentation
 
-[Help Page](https://htmlpreview.github.io/?https://raw.githubusercontent.com/kenz67/FlightSim-AircraftState/master/AircraftState/Doc/Help.html)
+[Help Page](https://htmlpreview.github.io/?https://github.com/kenz67/FlightSim-AircraftState/blob/master/AircraftState/docs/Help.html)
 
 [Discussion](https://github.com/kenz67/FlightSim-AircraftState/discussions)
 
