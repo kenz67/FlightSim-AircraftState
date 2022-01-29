@@ -590,7 +590,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 44);
+            this.label1.Location = new System.Drawing.Point(38, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 20;
@@ -599,7 +599,7 @@
             // labelAircraft
             // 
             this.labelAircraft.AutoSize = true;
-            this.labelAircraft.Location = new System.Drawing.Point(97, 44);
+            this.labelAircraft.Location = new System.Drawing.Point(168, 45);
             this.labelAircraft.Name = "labelAircraft";
             this.labelAircraft.Size = new System.Drawing.Size(0, 13);
             this.labelAircraft.TabIndex = 21;

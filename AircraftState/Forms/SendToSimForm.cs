@@ -36,7 +36,10 @@ namespace AircraftState.Forms
 
         public void ApplyData(string plane)
         {
-            labelAircraft.Text = plane;
+            if (string.IsNullOrEmpty(labelAircraft.Text))
+            {
+                labelAircraft.Text = plane;
+            }
             Plane = plane;
 
             PlaneData = dbData.GetData(plane);
