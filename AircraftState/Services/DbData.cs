@@ -1,5 +1,6 @@
 ﻿using AircraftState.Models;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Data.SQLite;
 
 namespace AircraftState.Services
@@ -51,6 +52,30 @@ namespace AircraftState.Services
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        public List<string> GetSavedPlanes()
+        {
+            var result = new List<string>();
+            using (var connection = new SQLiteConnection($"Data Source={DbCommon.DbName}"))
+            {
+                connection.Open();
+
+                using (SQLiteCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT plane FROM planeData ORDER BY plane";
+
+                    using (var rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            result.Add(rdr.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

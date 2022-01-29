@@ -90,6 +90,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxSendFuel = new System.Windows.Forms.CheckBox();
             this.checkBoxSendLocation = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxSettingsFrom = new System.Windows.Forms.ComboBox();
             this.groupBoxRadio.SuspendLayout();
             this.groupFuel.SuspendLayout();
             this.groupLocation.SuspendLayout();
@@ -118,7 +120,7 @@
             this.groupBoxRadio.Controls.Add(this.labelStandBy);
             this.groupBoxRadio.Controls.Add(this.labelActive);
             this.groupBoxRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxRadio.Location = new System.Drawing.Point(30, 78);
+            this.groupBoxRadio.Location = new System.Drawing.Point(38, 102);
             this.groupBoxRadio.Name = "groupBoxRadio";
             this.groupBoxRadio.Size = new System.Drawing.Size(253, 188);
             this.groupBoxRadio.TabIndex = 1;
@@ -284,7 +286,7 @@
             this.groupFuel.Controls.Add(this.labelFuelRight);
             this.groupFuel.Controls.Add(this.labelFuelLeft);
             this.groupFuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupFuel.Location = new System.Drawing.Point(438, 282);
+            this.groupFuel.Location = new System.Drawing.Point(446, 306);
             this.groupFuel.Name = "groupFuel";
             this.groupFuel.Size = new System.Drawing.Size(164, 127);
             this.groupFuel.TabIndex = 17;
@@ -356,7 +358,7 @@
             this.groupLocation.Controls.Add(this.labelLocationLat);
             this.groupLocation.Controls.Add(this.labelLocationLong);
             this.groupLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupLocation.Location = new System.Drawing.Point(308, 78);
+            this.groupLocation.Location = new System.Drawing.Point(316, 102);
             this.groupLocation.Name = "groupLocation";
             this.groupLocation.Size = new System.Drawing.Size(176, 142);
             this.groupLocation.TabIndex = 18;
@@ -444,7 +446,7 @@
             this.groupBoxOBS.Controls.Add(this.labelObsObs2);
             this.groupBoxOBS.Controls.Add(this.labelObsObs1);
             this.groupBoxOBS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxOBS.Location = new System.Drawing.Point(30, 282);
+            this.groupBoxOBS.Location = new System.Drawing.Point(38, 306);
             this.groupBoxOBS.Name = "groupBoxOBS";
             this.groupBoxOBS.Size = new System.Drawing.Size(176, 127);
             this.groupBoxOBS.TabIndex = 19;
@@ -512,7 +514,7 @@
             this.groupBoxOther.Controls.Add(this.labelOtherHeadingBug);
             this.groupBoxOther.Controls.Add(this.labelOtherKohlsman);
             this.groupBoxOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxOther.Location = new System.Drawing.Point(509, 78);
+            this.groupBoxOther.Location = new System.Drawing.Point(517, 102);
             this.groupBoxOther.Name = "groupBoxOther";
             this.groupBoxOther.Size = new System.Drawing.Size(205, 107);
             this.groupBoxOther.TabIndex = 18;
@@ -576,7 +578,7 @@
             // buttonSend
             // 
             this.buttonSend.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonSend.Location = new System.Drawing.Point(30, 430);
+            this.buttonSend.Location = new System.Drawing.Point(38, 454);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(75, 23);
             this.buttonSend.TabIndex = 22;
@@ -590,9 +592,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(35, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Aircraft: ";
+            this.label1.Text = "Current Aircraft: ";
             // 
             // labelAircraft
             // 
@@ -615,7 +617,7 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(147, 429);
+            this.buttonCancel.Location = new System.Drawing.Point(155, 453);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 24;
@@ -626,7 +628,7 @@
             // checkBoxHide
             // 
             this.checkBoxHide.AutoSize = true;
-            this.checkBoxHide.Location = new System.Drawing.Point(291, 429);
+            this.checkBoxHide.Location = new System.Drawing.Point(299, 453);
             this.checkBoxHide.Name = "checkBoxHide";
             this.checkBoxHide.Size = new System.Drawing.Size(194, 17);
             this.checkBoxHide.TabIndex = 25;
@@ -642,7 +644,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.labelOtherParkBreak);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(233, 282);
+            this.groupBox1.Location = new System.Drawing.Point(241, 306);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(188, 127);
             this.groupBox1.TabIndex = 28;
@@ -688,7 +690,7 @@
             // checkBoxSendFuel
             // 
             this.checkBoxSendFuel.AutoSize = true;
-            this.checkBoxSendFuel.Location = new System.Drawing.Point(647, 290);
+            this.checkBoxSendFuel.Location = new System.Drawing.Point(655, 314);
             this.checkBoxSendFuel.Name = "checkBoxSendFuel";
             this.checkBoxSendFuel.Size = new System.Drawing.Size(100, 17);
             this.checkBoxSendFuel.TabIndex = 29;
@@ -698,12 +700,31 @@
             // checkBoxSendLocation
             // 
             this.checkBoxSendLocation.AutoSize = true;
-            this.checkBoxSendLocation.Location = new System.Drawing.Point(647, 316);
+            this.checkBoxSendLocation.Location = new System.Drawing.Point(655, 340);
             this.checkBoxSendLocation.Name = "checkBoxSendLocation";
             this.checkBoxSendLocation.Size = new System.Drawing.Size(121, 17);
             this.checkBoxSendLocation.TabIndex = 30;
             this.checkBoxSendLocation.Text = "Send Location Data";
             this.checkBoxSendLocation.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(38, 70);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(127, 13);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Apply Settings From: ";
+            // 
+            // comboBoxSettingsFrom
+            // 
+            this.comboBoxSettingsFrom.FormattingEnabled = true;
+            this.comboBoxSettingsFrom.Location = new System.Drawing.Point(171, 70);
+            this.comboBoxSettingsFrom.Name = "comboBoxSettingsFrom";
+            this.comboBoxSettingsFrom.Size = new System.Drawing.Size(322, 21);
+            this.comboBoxSettingsFrom.TabIndex = 32;
+            this.comboBoxSettingsFrom.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSettingsFrom_SelectedIndexChanged);
             // 
             // SendToSimForm
             // 
@@ -711,7 +732,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(800, 493);
+            this.ClientSize = new System.Drawing.Size(800, 519);
+            this.Controls.Add(this.comboBoxSettingsFrom);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.checkBoxSendLocation);
             this.Controls.Add(this.checkBoxSendFuel);
             this.Controls.Add(this.groupBox1);
@@ -809,6 +832,8 @@
         private System.Windows.Forms.CheckBox checkBoxSendLocation;
         private System.Windows.Forms.TextBox textBoxTrim;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBoxSettingsFrom;
     }
 }
 

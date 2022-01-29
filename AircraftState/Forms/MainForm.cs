@@ -15,7 +15,7 @@ namespace AircraftState.Forms
         public string Title { get; set; } = string.Empty;
 
         public MainForm()
-        {            
+        {
             string appDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\AircraftState";
             if (!Directory.Exists(appDir))
             {
@@ -37,14 +37,14 @@ namespace AircraftState.Forms
             toolStripStatusLabelConnected.Text = "Not connected to sim";
             toolStripStatusLabelConnected.BackColor = Color.Red;
             toolStripStatusLabelConnected.ForeColor = Color.White;
-            
+
             this.Text = $"Aircraft State - {Application.ProductVersion}";
 
             // calculate when build was done
             //var days = int.Parse(Application.ProductVersion.Split('.')[2]);
             //var seconds = int.Parse(Application.ProductVersion.Split('.')[3]) * 2;
             //var builddate = DateTime.Parse("2000-01-01T00:00:00").AddDays(days).ToShortDateString();
-            //var buildtime = DateTime.Now.Subtract(DateTime.Now.TimeOfDay).AddSeconds(seconds).ToShortTimeString();      
+            //var buildtime = DateTime.Now.Subtract(DateTime.Now.TimeOfDay).AddSeconds(seconds).ToShortTimeString();
         }
 
         protected override void DefWndProc(ref Message m)
@@ -85,8 +85,8 @@ namespace AircraftState.Forms
             textBoxNav1Standby.Text = planeData.nav1Standby.ToString("N2");
             textBoxNav2Active.Text = planeData.nav2Active.ToString("N2");
             textBoxNav2Standby.Text = planeData.nav2Standby.ToString("N2");
-            textBoxAdfActive.Text = Math.Round(1000 * planeData.adfActive,1).ToString("000.0");
-            textBoxAdfStandby.Text = Math.Round(1000 * planeData.adfStandby,1).ToString("000.0");
+            textBoxAdfActive.Text = Math.Round(1000 * planeData.adfActive, 1).ToString("000.0");
+            textBoxAdfStandby.Text = Math.Round(1000 * planeData.adfStandby, 1).ToString("000.0");
 
             textBoxObsObs1.Text = planeData.obs1.ToString("N0");
             textBoxObsObs2.Text = planeData.obs2.ToString("N0");
@@ -154,7 +154,7 @@ namespace AircraftState.Forms
             if (DbSettings.Settings.ShowApplyForm)
             {
                 var sendToSimForm = new SendToSimForm();
-                sendToSimForm.ApplyData(Title, dataFromDb);
+                sendToSimForm.ApplyData(Title);
                 sendToSimForm.ShowDialog();
                 if (!sendToSimForm.OK)
                 {
@@ -163,14 +163,14 @@ namespace AircraftState.Forms
 
                 sendFuel = sendToSimForm.SendFuel;
                 sendLocation = sendToSimForm.SendLocation;
+                SimConnect.SendDataToSim(sendToSimForm.PlaneData, sendFuel, sendLocation);
             }
             else
             {
                 sendFuel = DbSettings.Settings.SetFuel;
                 sendLocation = DbSettings.Settings.SetLocation;
+                SimConnect.SendDataToSim(dataFromDb, sendFuel, sendLocation);
             }
-
-            SimConnect.SendDataToSim(dataFromDb, sendFuel, sendLocation);
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
