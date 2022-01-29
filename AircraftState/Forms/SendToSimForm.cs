@@ -12,60 +12,76 @@ namespace AircraftState.Forms
         public bool OK { get; set; }
         public bool SendFuel { get; set; }
         public bool SendLocation { get; set; }
+        public PlaneData PlaneData { get; private set; }
+
+        private string Plane;
+        private DbData dbData;
 
         public SendToSimForm()
         {
             InitializeComponent();
+            dbData = new DbData();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            comboBoxSettingsFrom.Items.Clear();
+            comboBoxSettingsFrom.Items.Add("Select stored data to send");
+            comboBoxSettingsFrom.Items.AddRange(dbData.GetSavedPlanes().ToArray());
+            comboBoxSettingsFrom.SelectedText = Plane;
+
             checkBoxSendFuel.Checked = DbSettings.Settings.SetFuel;
             checkBoxSendLocation.Checked = DbSettings.Settings.SetLocation;
         }
 
-        public void ApplyData(string plane, PlaneData planeData)
+        public void ApplyData(string plane)
         {
-            labelAircraft.Text = plane;
+            if (string.IsNullOrEmpty(labelAircraft.Text))
+            {
+                labelAircraft.Text = plane;
+            }
+            Plane = plane;
 
-            textBoxCom1Active.Text = planeData.com1Active.ToString("N3");
-            textBoxCom1Standby.Text = planeData.com1Standby.ToString("N3");
-            textBoxCom2Active.Text = planeData.com2Active.ToString("N3");
-            textBoxCom2Standby.Text = planeData.com2Standby.ToString("N3");
-            textBoxNav1Active.Text = planeData.nav1Active.ToString("N2");
-            textBoxNav1Standby.Text = planeData.nav1Standby.ToString("N2");
-            textBoxNav2Active.Text = planeData.nav2Active.ToString("N2");
-            textBoxNav2Standby.Text = planeData.nav2Standby.ToString("N2");
-            textBoxAdfActive.Text = Math.Round(1000 * planeData.adfActive, 1).ToString("000.0");
-            textBoxAdfStandby.Text = Math.Round(1000 * planeData.adfActive, 1).ToString("000.0");
+            PlaneData = dbData.GetData(plane);
 
-            textBoxObsObs1.Text = planeData.obs1.ToString("N0");
-            textBoxObsObs2.Text = planeData.obs2.ToString("N0");
-            textBoxObsAdf.Text = planeData.adfCard.ToString("N0");
+            textBoxCom1Active.Text = PlaneData.com1Active.ToString("N3");
+            textBoxCom1Standby.Text = PlaneData.com1Standby.ToString("N3");
+            textBoxCom2Active.Text = PlaneData.com2Active.ToString("N3");
+            textBoxCom2Standby.Text = PlaneData.com2Standby.ToString("N3");
+            textBoxNav1Active.Text = PlaneData.nav1Active.ToString("N2");
+            textBoxNav1Standby.Text = PlaneData.nav1Standby.ToString("N2");
+            textBoxNav2Active.Text = PlaneData.nav2Active.ToString("N2");
+            textBoxNav2Standby.Text = PlaneData.nav2Standby.ToString("N2");
+            textBoxAdfActive.Text = Math.Round(1000 * PlaneData.adfActive, 1).ToString("000.0");
+            textBoxAdfStandby.Text = Math.Round(1000 * PlaneData.adfActive, 1).ToString("000.0");
 
-            textBoxLocationLat.Text = Formatter.GetLatLong(planeData.latitude, true);
-            textBoxLocationLong.Text = Formatter.GetLatLong(planeData.longitude, false);
+            textBoxObsObs1.Text = PlaneData.obs1.ToString("N0");
+            textBoxObsObs2.Text = PlaneData.obs2.ToString("N0");
+            textBoxObsAdf.Text = PlaneData.adfCard.ToString("N0");
 
-            textBoxLocationAltitude.Text = planeData.altitude.ToString();
-            textBoxLocationHeading.Text = planeData.heading.ToString("N0");
+            textBoxLocationLat.Text = Formatter.GetLatLong(PlaneData.latitude, true);
+            textBoxLocationLong.Text = Formatter.GetLatLong(PlaneData.longitude, false);
 
-            textBoxFuelLeft.Text = planeData.fuelLeft.ToString("N2");
-            textBoxFuelRight.Text = planeData.fuelRight.ToString("N2");
-            switch (planeData.fuelSelector)
+            textBoxLocationAltitude.Text = PlaneData.altitude.ToString();
+            textBoxLocationHeading.Text = PlaneData.heading.ToString("N0");
+
+            textBoxFuelLeft.Text = PlaneData.fuelLeft.ToString("N2");
+            textBoxFuelRight.Text = PlaneData.fuelRight.ToString("N2");
+            switch (PlaneData.fuelSelector)
             {
                 case 0: textBoxFuelSelector.Text = "Off"; break;
                 case 1: textBoxFuelSelector.Text = "Both"; break;
                 case 2: textBoxFuelSelector.Text = "Left"; break;
                 case 3: textBoxFuelSelector.Text = "Right"; break;
-                default: textBoxFuelSelector.Text = planeData.fuelSelector.ToString(); break;
+                default: textBoxFuelSelector.Text = PlaneData.fuelSelector.ToString(); break;
             }
 
-            textBoxOtherParkingBrake.Text = planeData.parkingBrake ? "On" : "Off";
-            textBoxOtherKolhsman.Text = planeData.kohlsman.ToString("N2");
-            textBoxOtherHeadingBug.Text = planeData.headingBug.ToString();
-            textBoxFlaps.Text = planeData.flapsIndex.ToString();
-            var nodeDown = Math.Round(planeData.elevtorTrim, 2) < 0 ? "Nose Down" : String.Empty;
-            textBoxTrim.Text = $"{Math.Abs(planeData.elevtorTrim):N2} {(Math.Round(planeData.elevtorTrim, 2) > 0 ? "Nose Up" : nodeDown)}";
+            textBoxOtherParkingBrake.Text = PlaneData.parkingBrake ? "On" : "Off";
+            textBoxOtherKolhsman.Text = PlaneData.kohlsman.ToString("N2");
+            textBoxOtherHeadingBug.Text = PlaneData.headingBug.ToString();
+            textBoxFlaps.Text = PlaneData.flapsIndex.ToString();
+            var nodeDown = Math.Round(PlaneData.elevtorTrim, 2) < 0 ? "Nose Down" : String.Empty;
+            textBoxTrim.Text = $"{Math.Abs(PlaneData.elevtorTrim):N2} {(Math.Round(PlaneData.elevtorTrim, 2) > 0 ? "Nose Up" : nodeDown)}";
         }
 
         private void ButtonSend_Click(object sender, EventArgs e)
@@ -86,6 +102,11 @@ namespace AircraftState.Forms
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ComboBoxSettingsFrom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyData(comboBoxSettingsFrom.SelectedItem.ToString());
         }
     }
 }
