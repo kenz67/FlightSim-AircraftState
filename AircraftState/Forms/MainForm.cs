@@ -38,6 +38,15 @@ namespace AircraftState.Forms
             toolStripStatusLabelConnected.BackColor = Color.Red;
             toolStripStatusLabelConnected.ForeColor = Color.White;
 
+            var toolTipButtonSend = new ToolTip();
+            toolTipButtonSend.SetToolTip(buttonSend, "Send saved data to the sim, usually at the start of the flight");
+
+            var toolTipButtonSave = new ToolTip();
+            toolTipButtonSave.SetToolTip(buttonSaveToDb, "Save the current data from the sim for future use, usually at end of the flight");
+
+            var toolTipButtonConnect = new ToolTip();
+            toolTipButtonConnect.SetToolTip(buttonConnect, "Reconnect to sim if connection has been lost");
+
             this.Text = $"Aircraft State - {Application.ProductVersion}";
 
             // calculate when build was done
