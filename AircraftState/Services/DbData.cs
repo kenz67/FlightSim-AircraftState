@@ -16,7 +16,7 @@ namespace AircraftState.Services
                 using (SQLiteCommand cmd = connection.CreateCommand())
                 {
                     cmd.Parameters.AddWithValue("@plane", plane);
-                    cmd.CommandText = @"SELECT data FROM planeData WHERE Plane = @plane";
+                    cmd.CommandText = "SELECT data FROM planeData WHERE Plane = @plane";
 
                     using (var rdr = cmd.ExecuteReader())
                     {
@@ -63,7 +63,7 @@ namespace AircraftState.Services
 
                 using (SQLiteCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT plane FROM planeData ORDER BY plane";
+                    cmd.CommandText = "SELECT plane FROM planeData ORDER BY plane";
 
                     using (var rdr = cmd.ExecuteReader())
                     {

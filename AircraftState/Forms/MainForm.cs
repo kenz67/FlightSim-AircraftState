@@ -150,15 +150,8 @@ namespace AircraftState.Forms
 
         private void ButtonSend_Click(object sender, EventArgs e)
         {
-            var dataFromDb = new DbData().GetData(Title);
             bool sendFuel;
             bool sendLocation;
-
-            if (!dataFromDb.validData)
-            {
-                MessageBox.Show("No data found in db", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             if (DbSettings.Settings.ShowApplyForm)
             {
@@ -176,6 +169,13 @@ namespace AircraftState.Forms
             }
             else
             {
+                var dataFromDb = new DbData().GetData(Title);
+                if (!dataFromDb.validData)
+                {
+                    MessageBox.Show("No data found in db", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 sendFuel = DbSettings.Settings.SetFuel;
                 sendLocation = DbSettings.Settings.SetLocation;
                 SimConnect.SendDataToSim(dataFromDb, sendFuel, sendLocation);

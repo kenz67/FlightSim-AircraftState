@@ -15,7 +15,7 @@ namespace AircraftState.Forms
         public PlaneData PlaneData { get; private set; }
 
         private string Plane;
-        private DbData dbData;
+        private readonly DbData dbData;
 
         public SendToSimForm()
         {
@@ -25,10 +25,21 @@ namespace AircraftState.Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            var data = dbData.GetSavedPlanes().ToArray();
+
             comboBoxSettingsFrom.Items.Clear();
-            comboBoxSettingsFrom.Items.Add("Select stored data to send");
-            comboBoxSettingsFrom.Items.AddRange(dbData.GetSavedPlanes().ToArray());
-            comboBoxSettingsFrom.SelectedText = Plane;
+
+            if (data?.Length > 0)
+            {
+                comboBoxSettingsFrom.Items.Add("Select stored data to send");
+                comboBoxSettingsFrom.Items.AddRange(dbData.GetSavedPlanes().ToArray());
+                comboBoxSettingsFrom.SelectedText = Plane;
+            }
+            else
+            {
+                comboBoxSettingsFrom.Items.Add("No saved data to send");
+                comboBoxSettingsFrom.SelectedIndex = 0;
+            }
 
             checkBoxSendFuel.Checked = DbSettings.Settings.SetFuel;
             checkBoxSendLocation.Checked = DbSettings.Settings.SetLocation;
