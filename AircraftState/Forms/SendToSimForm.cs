@@ -33,7 +33,15 @@ namespace AircraftState.Forms
             {
                 comboBoxSettingsFrom.Items.Add("Select stored data to send");
                 comboBoxSettingsFrom.Items.AddRange(dbData.GetSavedPlanes().ToArray());
-                comboBoxSettingsFrom.SelectedText = Plane;
+
+                if (comboBoxSettingsFrom.FindStringExact(Plane) != -1)
+                {
+                    comboBoxSettingsFrom.SelectedText = Plane;
+                }
+                else
+                {
+                    comboBoxSettingsFrom.SelectedIndex = 0;
+                }
             }
             else
             {
@@ -118,6 +126,15 @@ namespace AircraftState.Forms
         private void ComboBoxSettingsFrom_SelectedIndexChanged(object sender, EventArgs e)
         {
             ApplyData(comboBoxSettingsFrom.SelectedItem.ToString());
+        }
+
+        private void ButtonDeleteProfile_Click(object sender, EventArgs e)
+        {
+            var selectedItem = comboBoxSettingsFrom.FindStringExact(comboBoxSettingsFrom.Text);
+
+            new DbData().DeleteSavedProfile(comboBoxSettingsFrom.Text);
+            comboBoxSettingsFrom.Items.RemoveAt(selectedItem);
+            comboBoxSettingsFrom.SelectedIndex = 0;
         }
     }
 }

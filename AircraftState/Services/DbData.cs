@@ -77,5 +77,21 @@ namespace AircraftState.Services
 
             return result;
         }
+
+        public void DeleteSavedProfile(string Profile)
+        {
+            using (var connection = new SQLiteConnection($"Data Source={DbCommon.DbName}"))
+            {
+                connection.Open();
+
+                using (var cmd = connection.CreateCommand())
+                {
+                    cmd.Parameters.AddWithValue("@key", Profile);
+
+                    cmd.CommandText = "DELETE FROM planeData WHERE plane = @key";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

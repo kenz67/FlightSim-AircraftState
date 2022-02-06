@@ -92,6 +92,7 @@
             this.checkBoxSendLocation = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxSettingsFrom = new System.Windows.Forms.ComboBox();
+            this.buttonDeleteProfile = new System.Windows.Forms.Button();
             this.groupBoxRadio.SuspendLayout();
             this.groupFuel.SuspendLayout();
             this.groupLocation.SuspendLayout();
@@ -726,6 +727,16 @@
             this.comboBoxSettingsFrom.TabIndex = 32;
             this.comboBoxSettingsFrom.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSettingsFrom_SelectedIndexChanged);
             // 
+            // buttonDeleteProfile
+            // 
+            this.buttonDeleteProfile.Location = new System.Drawing.Point(517, 70);
+            this.buttonDeleteProfile.Name = "buttonDeleteProfile";
+            this.buttonDeleteProfile.Size = new System.Drawing.Size(111, 23);
+            this.buttonDeleteProfile.TabIndex = 33;
+            this.buttonDeleteProfile.Text = "Delete Profile";
+            this.buttonDeleteProfile.UseVisualStyleBackColor = true;
+            this.buttonDeleteProfile.Click += new System.EventHandler(this.ButtonDeleteProfile_Click);
+            // 
             // SendToSimForm
             // 
             this.AcceptButton = this.buttonSend;
@@ -733,6 +744,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(800, 519);
+            this.Controls.Add(this.buttonDeleteProfile);
             this.Controls.Add(this.comboBoxSettingsFrom);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.checkBoxSendLocation);
@@ -834,6 +846,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxSettingsFrom;
+        private System.Windows.Forms.Button buttonDeleteProfile;
     }
 }
 
