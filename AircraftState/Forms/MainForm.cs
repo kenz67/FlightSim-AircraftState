@@ -2,7 +2,6 @@
 using AircraftState.Services;
 using AircraftState.Services.Helpers;
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -50,10 +49,13 @@ namespace AircraftState.Forms
             this.Text = $"Aircraft State - {Application.ProductVersion}";
 
             // calculate when build was done
+
+#pragma warning disable S125 // Sections of code should not be commented out
             //var days = int.Parse(Application.ProductVersion.Split('.')[2]);
             //var seconds = int.Parse(Application.ProductVersion.Split('.')[3]) * 2;
             //var builddate = DateTime.Parse("2000-01-01T00:00:00").AddDays(days).ToShortDateString();
             //var buildtime = DateTime.Now.Subtract(DateTime.Now.TimeOfDay).AddSeconds(seconds).ToShortTimeString();
+#pragma warning restore S125 // Sections of code should not be commented out
         }
 
         protected override void DefWndProc(ref Message m)

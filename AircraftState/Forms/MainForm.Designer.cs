@@ -89,13 +89,13 @@
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxTrim = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxFlaps = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxRadio.SuspendLayout();
             this.groupFuel.SuspendLayout();
             this.groupLocation.SuspendLayout();
@@ -584,11 +584,11 @@
             // buttonSend
             // 
             this.buttonSend.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonSend.Location = new System.Drawing.Point(649, 317);
+            this.buttonSend.Location = new System.Drawing.Point(632, 317);
             this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(75, 23);
+            this.buttonSend.Size = new System.Drawing.Size(92, 23);
             this.buttonSend.TabIndex = 22;
-            this.buttonSend.Text = "Send";
+            this.buttonSend.Text = "Send To Sim";
             this.buttonSend.UseVisualStyleBackColor = false;
             this.buttonSend.Click += new System.EventHandler(this.ButtonSend_Click);
             // 
@@ -619,19 +619,19 @@
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(649, 375);
+            this.buttonConnect.Location = new System.Drawing.Point(632, 375);
             this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(75, 23);
+            this.buttonConnect.Size = new System.Drawing.Size(92, 23);
             this.buttonConnect.TabIndex = 25;
-            this.buttonConnect.Text = "Connect";
+            this.buttonConnect.Text = "Connect To Sim";
             this.buttonConnect.UseVisualStyleBackColor = true;
             this.buttonConnect.Click += new System.EventHandler(this.ButtonConnect_Click);
             // 
             // buttonSaveToDb
             // 
-            this.buttonSaveToDb.Location = new System.Drawing.Point(649, 346);
+            this.buttonSaveToDb.Location = new System.Drawing.Point(632, 346);
             this.buttonSaveToDb.Name = "buttonSaveToDb";
-            this.buttonSaveToDb.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveToDb.Size = new System.Drawing.Size(92, 23);
             this.buttonSaveToDb.TabIndex = 26;
             this.buttonSaveToDb.Text = "SaveTo Db";
             this.buttonSaveToDb.UseVisualStyleBackColor = true;
@@ -667,14 +667,14 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -688,6 +688,13 @@
             this.menuStrip1.Size = new System.Drawing.Size(770, 24);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -751,13 +758,6 @@
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 28;
             this.label3.Text = "Live Data";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // MainForm
             // 
