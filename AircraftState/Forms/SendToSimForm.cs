@@ -72,7 +72,7 @@ namespace AircraftState.Forms
             textBoxNav2Active.Text = PlaneData.nav2Active.ToString("N2");
             textBoxNav2Standby.Text = PlaneData.nav2Standby.ToString("N2");
             textBoxAdfActive.Text = Math.Round(1000 * PlaneData.adfActive, 1).ToString("000.0");
-            textBoxAdfStandby.Text = Math.Round(1000 * PlaneData.adfActive, 1).ToString("000.0");
+            textBoxAdfStandby.Text = Math.Round(1000 * PlaneData.adfStandby, 1).ToString("000.0");
 
             textBoxObsObs1.Text = PlaneData.obs1.ToString("N0");
             textBoxObsObs2.Text = PlaneData.obs2.ToString("N0");
