@@ -34,7 +34,8 @@ namespace AircraftState.Services
 	                SELECT '{SettingDefinitions.ApplyLocation}' as DataKey, 'false' as DataValue UNION
 	                SELECT '{SettingDefinitions.ApplyFuel}', 'true' UNION
                     SELECT '{SettingDefinitions.AutoSave}', 'false' UNION
-                    SELECT '{SettingDefinitions.ShowApplyForm}', 'true'
+                    SELECT '{SettingDefinitions.ShowApplyForm}', 'true' UNION
+                    SELECT '{SettingDefinitions.ShowSaveAs}', 'true'
                 )
                 INSERT INTO settings (DataKey, DataValue)
                     SELECT DataKey, DataValue FROM v t1

@@ -93,10 +93,10 @@ namespace AircraftState.Services
             form.ShowSimEnvironmentDataOnForm(masterData);
         }
 
-        public void SaveDataToDb()
+        public void SaveDataToDb(string saveName)
         {
             var db = new DbData();
-            db.SaveData(form.Title, data);
+            db.SaveData(saveName, data);
         }
 
         public void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation)

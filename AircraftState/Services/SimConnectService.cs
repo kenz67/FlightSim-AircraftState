@@ -247,7 +247,7 @@ namespace AircraftState.Services
 
         private uint ConvertAdf(double adf)
         {
-            return Dec2Bcd(Math.Round(adf,4) * 100000);
+            return Dec2Bcd(Math.Round(adf, 4) * 100000);
         }
 
         public static uint Dec2Bcd(uint num)
@@ -314,7 +314,7 @@ namespace AircraftState.Services
                         ApplicationStatic.ReadyToAutoSave = false;
                         if (sentToSim)  //todo, do i want this?
                         {
-                            SaveDataToDb();
+                            SaveDataToDb(mainForm.Title);
                         }
                     }
 
@@ -366,7 +366,7 @@ namespace AircraftState.Services
             }
         }
 
-        public void SaveDataToDb()
+        public void SaveDataToDb(string SaveName)
         {
             if (planeData.com1Active.Equals(124.850) && planeData.com1Standby.Equals(124.85))
             {
@@ -375,8 +375,8 @@ namespace AircraftState.Services
             else
             {
                 var db = new DbData();
-                db.SaveData(mainForm.Title, planeData);
-                mainForm.ShowMessageBox($"Current data saved to {mainForm.Title}", "Save Data");
+                db.SaveData(SaveName, planeData);
+                mainForm.ShowMessageBox($"Current data saved to {SaveName}", "Save Data");
             }
         }
 

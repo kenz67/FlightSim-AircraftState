@@ -27,8 +27,8 @@ namespace AircraftState.Forms
             InitializeComponent();
 
             // this.BackColor = Color.White;
-            SimConnect = new SimConnectService(this);
-            //SimConnect = new TestConnectClass(this);
+            //  SimConnect = new SimConnectService(this);
+            SimConnect = new TestConnectClass(this);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -209,7 +209,18 @@ namespace AircraftState.Forms
 
         private void ButtonSaveToDb_Click(object sender, EventArgs e)
         {
-            SimConnect.SaveDataToDb();
+            if (DbSettings.Settings.ShowSaveAs)
+            {
+                var settingsName = Prompt.ShowDialog("Save Settings to Database", "Name to save as", "Save", Title, true);
+                if (!string.IsNullOrEmpty(settingsName))
+                {
+                    SimConnect.SaveDataToDb(settingsName);
+                }
+            }
+            else
+            {
+                SimConnect.SaveDataToDb(Title);
+            }
         }
 
         public void ShowMessageBox(string text, string title)

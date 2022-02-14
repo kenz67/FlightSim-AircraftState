@@ -15,7 +15,7 @@ namespace AircraftState.Services
 
         void GetSimEnvInfo();
 
-        void SaveDataToDb();
+        void SaveDataToDb(string SaveName);
 
         void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation);
     }

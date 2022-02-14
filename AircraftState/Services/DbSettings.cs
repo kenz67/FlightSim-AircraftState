@@ -42,6 +42,7 @@ namespace AircraftState.Services
                                 case SettingDefinitions.ApplyFuel: settings.SetFuel = rdr.GetString(1).Equals("true"); break;
                                 case SettingDefinitions.ShowApplyForm: settings.ShowApplyForm = rdr.GetString(1).Equals("true"); break;
                                 case SettingDefinitions.AutoSave: settings.AutoSave = rdr.GetString(1).Equals("true"); break;
+                                case SettingDefinitions.ShowSaveAs: settings.ShowSaveAs = rdr.GetString(1).Equals("true"); break;
                             }
                         }
                     }
@@ -71,6 +72,7 @@ namespace AircraftState.Services
                 SetSetting(connection, SettingDefinitions.ApplyFuel, settings.SetFuel);
                 SetSetting(connection, SettingDefinitions.ShowApplyForm, settings.ShowApplyForm);
                 SetSetting(connection, SettingDefinitions.AutoSave, settings.AutoSave);
+                SetSetting(connection, SettingDefinitions.ShowSaveAs, settings.ShowSaveAs);
 
                 ReadSettings();
             }
