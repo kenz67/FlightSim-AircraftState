@@ -25,5 +25,10 @@ namespace AircraftState.Services.Helpers
 
             return result;
         }
+
+        public static string GetOnOff(bool val)
+        {
+            return val ? "On" : "Off";
+        }
     }
 }

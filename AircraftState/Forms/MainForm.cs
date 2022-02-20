@@ -27,8 +27,8 @@ namespace AircraftState.Forms
             InitializeComponent();
 
             // this.BackColor = Color.White;
-            SimConnect = new SimConnectService(this);
-            //SimConnect = new TestConnectClass(this);
+            //SimConnect = new SimConnectService(this);
+            SimConnect = new TestConnectClass(this);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -50,12 +50,10 @@ namespace AircraftState.Forms
 
             // calculate when build was done
 
-#pragma warning disable S125 // Sections of code should not be commented out
             //var days = int.Parse(Application.ProductVersion.Split('.')[2]);
             //var seconds = int.Parse(Application.ProductVersion.Split('.')[3]) * 2;
             //var builddate = DateTime.Parse("2000-01-01T00:00:00").AddDays(days).ToShortDateString();
             //var buildtime = DateTime.Now.Subtract(DateTime.Now.TimeOfDay).AddSeconds(seconds).ToShortTimeString();
-#pragma warning restore S125 // Sections of code should not be commented out
         }
 
         protected override void DefWndProc(ref Message m)
@@ -83,6 +81,26 @@ namespace AircraftState.Forms
         }
 
         public void ShowSimDataOnForm(PlaneData planeData)
+        {
+            UpdateMainTab(planeData);
+            UpdateExtendedTab(planeData);
+
+            if (string.IsNullOrEmpty(Title))
+            {
+                SimConnect.GetSimEnvInfo();
+            }
+
+            if (ApplicationStatic.ReadyToAutoSave)
+            {
+                toolStripStatusAutoSave.Text = "Autosave";
+            }
+            else
+            {
+                toolStripStatusAutoSave.Text = string.Empty;
+            }
+        }
+
+        private void UpdateMainTab(PlaneData planeData)
         {
             toolStripStatusLabelConnected.Text = "Connected to sim";
             toolStripStatusLabelConnected.BackColor = Color.MediumBlue;
@@ -119,7 +137,7 @@ namespace AircraftState.Forms
                 default: textBoxFuelSelector.Text = planeData.fuelSelector.ToString(); break;
             }
 
-            textBoxOtherParkingBrake.Text = planeData.parkingBrake ? "On" : "Off";
+            textBoxOtherParkingBrake.Text = Formatter.GetOnOff(planeData.parkingBrake);
             textBoxOtherKolhsman.Text = planeData.kohlsman.ToString("N2");
             textBoxOtherHeadingBug.Text = planeData.headingBug.ToString();
 
@@ -127,25 +145,27 @@ namespace AircraftState.Forms
 
             var noseDown = Math.Round(planeData.elevtorTrim, 3) >= 0 ? string.Empty : "Nose Down";
             textBoxTrim.Text = $"{Math.Abs(planeData.elevtorTrim):N3} {(Math.Round(planeData.elevtorTrim, 3) > 0 ? "Nose Up" : noseDown) }";
+        }
 
-            if (string.IsNullOrEmpty(Title))
-            {
-                SimConnect.GetSimEnvInfo();
-            }
-
-            if (ApplicationStatic.ReadyToAutoSave)
-            {
-                toolStripStatusAutoSave.Text = "Autosave";
-            }
-            else
-            {
-                toolStripStatusAutoSave.Text = string.Empty;
-            }
+        private void UpdateExtendedTab(PlaneData planeData)
+        {
+            textBoxMasterBattery.Text = Formatter.GetOnOff(planeData.masterBattery);
+            textBoxMasterAlt.Text = Formatter.GetOnOff(planeData.masterAlternator);
+            textBoxAvionicsMaster.Text = Formatter.GetOnOff(planeData.masterAvionics);
+            textBoxNavLight.Text = Formatter.GetOnOff(planeData.lightNav);
+            textBoxBeaconLight.Text = Formatter.GetOnOff(planeData.lightBeacon);
+            textBoxLandingLight.Text = Formatter.GetOnOff(planeData.lightLanding);
+            textBoxTaxiLight.Text = Formatter.GetOnOff(planeData.lightTaxi);
+            textBoxStrobeLight.Text = Formatter.GetOnOff(planeData.lightStrobe);
+            textBoxPanelLight.Text = Formatter.GetOnOff(planeData.lightPanel);
+            textBoxCabinLight.Text = Formatter.GetOnOff(planeData.lightCabin);
+            textBoxLogoLight.Text = Formatter.GetOnOff(planeData.lightLogo);
+            textBox2WingLight.Text = Formatter.GetOnOff(planeData.lightWing);
+            textBoxRecognitionLight.Text = Formatter.GetOnOff(planeData.lightRecognition);
         }
 
         public void ShowSimEnvironmentDataOnForm(MasterData envData)
         {
-            //todo: make aircraft selection combo-box so you cacn select other planes?
             labelAircraft.Text = envData.title;
             Title = envData.title;
         }
@@ -154,6 +174,7 @@ namespace AircraftState.Forms
         {
             bool sendFuel;
             bool sendLocation;
+            bool sendExtended;
 
             if (DbSettings.Settings.ShowApplyForm)
             {
@@ -167,7 +188,8 @@ namespace AircraftState.Forms
 
                 sendFuel = sendToSimForm.SendFuel;
                 sendLocation = sendToSimForm.SendLocation;
-                SimConnect.SendDataToSim(sendToSimForm.PlaneData, sendFuel, sendLocation);
+                sendExtended = sendToSimForm.SendExtendedData;
+                SimConnect.SendDataToSim(sendToSimForm.PlaneData, sendFuel, sendLocation, sendExtended);
             }
             else
             {
@@ -180,7 +202,8 @@ namespace AircraftState.Forms
 
                 sendFuel = DbSettings.Settings.SetFuel;
                 sendLocation = DbSettings.Settings.SetLocation;
-                SimConnect.SendDataToSim(dataFromDb, sendFuel, sendLocation);
+                sendExtended = DbSettings.Settings.SendExtendedData;
+                SimConnect.SendDataToSim(dataFromDb, sendFuel, sendLocation, sendExtended);
             }
         }
 
@@ -195,10 +218,12 @@ namespace AircraftState.Forms
             {
                 MessageBox.Show("Error Connecting", "Connect to sim", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            toolStripStatusLabelConnected.Text = "Connected to sim";
-            toolStripStatusLabelConnected.BackColor = Color.MediumBlue;
-            toolStripStatusLabelConnected.ForeColor = Color.White;
+            else
+            {
+                toolStripStatusLabelConnected.Text = "Connected to sim";
+                toolStripStatusLabelConnected.BackColor = Color.MediumBlue;
+                toolStripStatusLabelConnected.ForeColor = Color.White;
+            }
         }
 
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)

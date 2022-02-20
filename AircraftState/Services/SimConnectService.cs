@@ -86,12 +86,26 @@ namespace AircraftState.Services
                 //Capture the name of the plane
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimEnvironmentDataStructure, "Title", null, SIMCONNECT_DATATYPE.STRING256, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
+                //Lights
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT NAV ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT BEACON ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT LANDING ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT TAXI ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT STROBE ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT PANEL ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT RECOGNITION ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT WING ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT CABIN ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT LOGO ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+
                 //Register the data structures being used
                 sim.RegisterDataDefineStruct<PlaneData>(DATA_DEFINITIONS.SimPlaneDataStructure);
                 sim.RegisterDataDefineStruct<MasterData>(DATA_DEFINITIONS.SimEnvironmentDataStructure);
                 sim.RegisterDataDefineStruct<MasterData>(DATA_DEFINITIONS.SimPlaneFuelData);
                 sim.RegisterDataDefineStruct<MasterData>(DATA_DEFINITIONS.SimPlaneLocationData);
                 sim.RegisterDataDefineStruct<MasterData>(DATA_DEFINITIONS.SimFlapsData);
+                sim.RegisterDataDefineStruct<MasterData>(DATA_DEFINITIONS.SimLightData);
+                sim.RegisterDataDefineStruct<MasterData>(DATA_DEFINITIONS.SimPowerData);
 
                 //Request data from sim
                 sim.RequestDataOnSimObject(DATA_REQUESTS_TYPES.DataRequest, DATA_DEFINITIONS.SimPlaneDataStructure, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
@@ -123,6 +137,17 @@ namespace AircraftState.Services
                 sim.MapClientEventToSimEvent(EVENT_IDS.FLAPS_4, "FLAPS_4");
                 sim.MapClientEventToSimEvent(EVENT_IDS.FLAPS_DOWN, "FLAPS_DOWN");
 
+                sim.MapClientEventToSimEvent(EVENT_IDS.NAV_LIGHT, "TOGGLE_NAV_LIGHTS");
+                sim.MapClientEventToSimEvent(EVENT_IDS.BEACON_LIGHT, "TOGGLE_BEACON_LIGHTS");
+                sim.MapClientEventToSimEvent(EVENT_IDS.LANDING_LIGHT, "LANDING_LIGHTS_TOGGLE");
+                sim.MapClientEventToSimEvent(EVENT_IDS.TAXI_LIGHT, "TOGGLE_TAXI_LIGHTS");
+                sim.MapClientEventToSimEvent(EVENT_IDS.STROBE_LIGHT, "STROBES_TOGGLE");
+                sim.MapClientEventToSimEvent(EVENT_IDS.PANEL_LIGHT, "PANEL_LIGHTS_TOGGLE");
+                sim.MapClientEventToSimEvent(EVENT_IDS.RECOGNITION_LIGHT, "TOGGLE_RECOGNITION_LIGHTS");
+                sim.MapClientEventToSimEvent(EVENT_IDS.WING_LIGHT, "TOGGLE_WING_LIGHTS");
+                sim.MapClientEventToSimEvent(EVENT_IDS.CABIN_LIGHT, "TOGGLE_CABIN_LIGHTS");
+                sim.MapClientEventToSimEvent(EVENT_IDS.LOGO_LIGHT, "TOGGLE_LOGO_LIGHTS");
+
                 //sim.SubscribeToSystemEvent(MY_SIMCONENCT_EVENT_IDS.Pause, "Pause");
             }
             catch /* (COMException ex) */
@@ -130,7 +155,7 @@ namespace AircraftState.Services
             }
         }
 
-        public void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation)
+        public void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation, bool sendExtended)
         {
             sentToSim = true;
 
@@ -197,7 +222,26 @@ namespace AircraftState.Services
                     break;
             }
 
-            //Udateable variables
+            if (sendExtended)
+            {
+                //Power
+                TurnOn(data.masterAlternator, EVENT_IDS.MASTER_ALTERNATOR);
+                TurnOn(data.masterBattery, EVENT_IDS.MASTER_BATTERY);
+                TurnOn(data.masterAvionics, EVENT_IDS.AVIONICS_MASTER);
+
+                ////Lights
+                TurnOn(data.lightNav, EVENT_IDS.NAV_LIGHT);
+                TurnOn(data.lightBeacon, EVENT_IDS.BEACON_LIGHT);
+                TurnOn(data.lightLanding, EVENT_IDS.LANDING_LIGHT);
+                TurnOn(data.lightTaxi, EVENT_IDS.TAXI_LIGHT);
+                TurnOn(data.lightStrobe, EVENT_IDS.STROBE_LIGHT);
+                TurnOn(data.lightPanel, EVENT_IDS.PANEL_LIGHT);
+                TurnOn(data.lightRecognition, EVENT_IDS.RECOGNITION_LIGHT);
+                TurnOn(data.lightWing, EVENT_IDS.WING_LIGHT);
+                TurnOn(data.lightCabin, EVENT_IDS.CABIN_LIGHT);
+                TurnOn(data.lightLogo, EVENT_IDS.LOGO_LIGHT);
+            }
+            //Updateable variables
 
             //Fuel
             if (sendFuel)
@@ -221,6 +265,14 @@ namespace AircraftState.Services
             //Trim
             var trimData = new TrimData { elevatorTrim = data.elevtorTrim };
             sim.SetDataOnSimObject(DATA_DEFINITIONS.SimTrimData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, trimData);
+        }
+
+        private void TurnOn(bool status, EVENT_IDS id)
+        {
+            if (status)
+            {
+                sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, id, 0, GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+            }
         }
 
         private uint ConvertCom(double value)
@@ -379,7 +431,5 @@ namespace AircraftState.Services
                 mainForm.ShowMessageBox($"Current data saved to {SaveName}", "Save Data");
             }
         }
-
-        //add option for auto save?
     }
 }

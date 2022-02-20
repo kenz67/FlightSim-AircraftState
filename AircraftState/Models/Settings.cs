@@ -7,5 +7,6 @@
         public bool ShowApplyForm { get; set; } = true;
         public bool AutoSave { get; set; } = false;
         public bool ShowSaveAs { get; set; } = true;
+        public bool SendExtendedData { get; set; } = true;
     }
 }

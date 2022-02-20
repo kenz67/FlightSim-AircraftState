@@ -8,5 +8,7 @@
         SimPlaneLocationData,
         SimFlapsData,
         SimTrimData,
+        SimLightData,
+        SimPowerData
     }
 }
