@@ -37,12 +37,13 @@ namespace AircraftState.Forms
             this.checkBoxShowSummary = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoSave = new System.Windows.Forms.CheckBox();
             this.checkBoxShowSaveAs = new System.Windows.Forms.CheckBox();
+            this.checkBoxSendExtendedData = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // checkBoxUpdatePlaneLocation
             // 
             this.checkBoxUpdatePlaneLocation.AutoSize = true;
-            this.checkBoxUpdatePlaneLocation.Location = new System.Drawing.Point(31, 101);
+            this.checkBoxUpdatePlaneLocation.Location = new System.Drawing.Point(31, 107);
             this.checkBoxUpdatePlaneLocation.Name = "checkBoxUpdatePlaneLocation";
             this.checkBoxUpdatePlaneLocation.Size = new System.Drawing.Size(135, 17);
             this.checkBoxUpdatePlaneLocation.TabIndex = 0;
@@ -53,7 +54,7 @@ namespace AircraftState.Forms
             // 
             this.checkBoxUpdateFuel.AllowDrop = true;
             this.checkBoxUpdateFuel.AutoSize = true;
-            this.checkBoxUpdateFuel.Location = new System.Drawing.Point(31, 124);
+            this.checkBoxUpdateFuel.Location = new System.Drawing.Point(31, 130);
             this.checkBoxUpdateFuel.Name = "checkBoxUpdateFuel";
             this.checkBoxUpdateFuel.Size = new System.Drawing.Size(84, 17);
             this.checkBoxUpdateFuel.TabIndex = 1;
@@ -62,7 +63,7 @@ namespace AircraftState.Forms
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(31, 171);
+            this.buttonOk.Location = new System.Drawing.Point(31, 193);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 2;
@@ -73,7 +74,7 @@ namespace AircraftState.Forms
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(141, 171);
+            this.buttonCancel.Location = new System.Drawing.Point(141, 193);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 3;
@@ -111,6 +112,16 @@ namespace AircraftState.Forms
             this.checkBoxShowSaveAs.Text = "Show Save As when saving to Db";
             this.checkBoxShowSaveAs.UseVisualStyleBackColor = true;
             // 
+            // checkBoxSendExtendedData
+            // 
+            this.checkBoxSendExtendedData.AutoSize = true;
+            this.checkBoxSendExtendedData.Location = new System.Drawing.Point(31, 153);
+            this.checkBoxSendExtendedData.Name = "checkBoxSendExtendedData";
+            this.checkBoxSendExtendedData.Size = new System.Drawing.Size(125, 17);
+            this.checkBoxSendExtendedData.TabIndex = 7;
+            this.checkBoxSendExtendedData.Text = "Send Extended Data";
+            this.checkBoxSendExtendedData.UseVisualStyleBackColor = true;
+            // 
             // SettingForm
             // 
             this.AcceptButton = this.buttonOk;
@@ -118,6 +129,7 @@ namespace AircraftState.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(264, 233);
+            this.Controls.Add(this.checkBoxSendExtendedData);
             this.Controls.Add(this.checkBoxShowSaveAs);
             this.Controls.Add(this.checkBoxAutoSave);
             this.Controls.Add(this.checkBoxShowSummary);
@@ -142,5 +154,6 @@ namespace AircraftState.Forms
         private System.Windows.Forms.CheckBox checkBoxShowSummary;
         private System.Windows.Forms.CheckBox checkBoxAutoSave;
         private System.Windows.Forms.CheckBox checkBoxShowSaveAs;
+        private System.Windows.Forms.CheckBox checkBoxSendExtendedData;
     }
 }

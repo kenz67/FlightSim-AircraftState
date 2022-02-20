@@ -7,5 +7,6 @@
         public const string ApplyFuel = "ApplyFuel";
         public const string AutoSave = "AutoSave";
         public const string ShowSaveAs = "SaveAs";
+        public const string SendExtendedData = "SendExtendedData";
     }
 }

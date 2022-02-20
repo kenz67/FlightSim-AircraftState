@@ -12,6 +12,8 @@ namespace AircraftState.Forms
         public bool OK { get; set; }
         public bool SendFuel { get; set; }
         public bool SendLocation { get; set; }
+        public bool SendExtendedData { get; set; }
+
         public PlaneData PlaneData { get; private set; }
 
         private string Plane;
@@ -51,6 +53,7 @@ namespace AircraftState.Forms
 
             checkBoxSendFuel.Checked = DbSettings.Settings.SetFuel;
             checkBoxSendLocation.Checked = DbSettings.Settings.SetLocation;
+            checkBoxSendExtendedData.Checked = DbSettings.Settings.SendExtendedData;
         }
 
         public void ApplyData(string plane)
@@ -62,7 +65,12 @@ namespace AircraftState.Forms
             Plane = plane;
 
             PlaneData = dbData.GetData(plane);
+            MainDataTab(PlaneData);
+            ExtendedTab(PlaneData);
+        }
 
+        private void MainDataTab(PlaneData PlaneData)
+        {
             textBoxCom1Active.Text = PlaneData.com1Active.ToString("N3");
             textBoxCom1Standby.Text = PlaneData.com1Standby.ToString("N3");
             textBoxCom2Active.Text = PlaneData.com2Active.ToString("N3");
@@ -103,6 +111,23 @@ namespace AircraftState.Forms
             textBoxTrim.Text = $"{Math.Abs(PlaneData.elevtorTrim):N2} {(Math.Round(PlaneData.elevtorTrim, 2) > 0 ? "Nose Up" : nodeDown)}";
         }
 
+        private void ExtendedTab(PlaneData planeData)
+        {
+            textBoxMasterBattery.Text = Formatter.GetOnOff(planeData.masterBattery);
+            textBoxMasterAlt.Text = Formatter.GetOnOff(planeData.masterAlternator);
+            textBoxAvionicsMaster.Text = Formatter.GetOnOff(planeData.masterAvionics);
+            textBoxNavLight.Text = Formatter.GetOnOff(planeData.lightNav);
+            textBoxBeaconLight.Text = Formatter.GetOnOff(planeData.lightBeacon);
+            textBoxLandingLight.Text = Formatter.GetOnOff(planeData.lightLanding);
+            textBoxTaxiLight.Text = Formatter.GetOnOff(planeData.lightTaxi);
+            textBoxStrobeLight.Text = Formatter.GetOnOff(planeData.lightStrobe);
+            textBoxPanelLight.Text = Formatter.GetOnOff(planeData.lightPanel);
+            textBoxCabinLight.Text = Formatter.GetOnOff(planeData.lightCabin);
+            textBoxLogoLight.Text = Formatter.GetOnOff(planeData.lightLogo);
+            textBox2WingLight.Text = Formatter.GetOnOff(planeData.lightWing);
+            textBoxRecognitionLight.Text = Formatter.GetOnOff(planeData.lightRecognition);
+        }
+
         private void ButtonSend_Click(object sender, EventArgs e)
         {
             OK = true;
@@ -114,6 +139,7 @@ namespace AircraftState.Forms
 
             SendFuel = checkBoxSendFuel.Checked;
             SendLocation = checkBoxSendLocation.Checked;
+            SendExtendedData = checkBoxSendExtendedData.Checked;
 
             this.Close();
         }

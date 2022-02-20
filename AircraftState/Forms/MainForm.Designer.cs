@@ -45,7 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxTrim = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -99,18 +98,48 @@
             this.labelCom1 = new System.Windows.Forms.Label();
             this.labelStandBy = new System.Windows.Forms.Label();
             this.labelActive = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBoxLogoLight = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBoxCabinLight = new System.Windows.Forms.TextBox();
+            this.textBoxPanelLight = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxStrobeLight = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxTaxiLight = new System.Windows.Forms.TextBox();
+            this.Nav = new System.Windows.Forms.Label();
+            this.textBoxLandingLight = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxBeaconLight = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxNavLight = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxMasterAlt = new System.Windows.Forms.TextBox();
+            this.textBoxMasterBattery = new System.Windows.Forms.TextBox();
+            this.textBoxAvionicsMaster = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxRecognitionLight = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox2WingLight = new System.Windows.Forms.TextBox();
             this.statusStripVersion.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxOther.SuspendLayout();
             this.groupBoxOBS.SuspendLayout();
             this.groupLocation.SuspendLayout();
             this.groupFuel.SuspendLayout();
             this.groupBoxRadio.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSend
@@ -151,7 +180,7 @@
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(244, 505);
+            this.buttonConnect.Location = new System.Drawing.Point(648, 505);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(92, 23);
             this.buttonConnect.TabIndex = 25;
@@ -263,17 +292,6 @@
             this.tabPage1.Size = new System.Drawing.Size(712, 389);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Data";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(712, 389);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Extended Data";
             // 
             // groupBox1
             // 
@@ -803,14 +821,295 @@
             this.labelActive.TabIndex = 0;
             this.labelActive.Text = "Active";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(712, 389);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Extended Data";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.textBoxRecognitionLight);
+            this.groupBox3.Controls.Add(this.label16);
+            this.groupBox3.Controls.Add(this.textBox2WingLight);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.textBoxLogoLight);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.textBoxCabinLight);
+            this.groupBox3.Controls.Add(this.textBoxPanelLight);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.textBoxStrobeLight);
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.textBoxTaxiLight);
+            this.groupBox3.Controls.Add(this.Nav);
+            this.groupBox3.Controls.Add(this.textBoxLandingLight);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.textBoxBeaconLight);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.textBoxNavLight);
+            this.groupBox3.Location = new System.Drawing.Point(262, 18);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(187, 336);
+            this.groupBox3.TabIndex = 21;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Lights";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(17, 210);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(43, 13);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Cabin:";
+            // 
+            // textBoxLogoLight
+            // 
+            this.textBoxLogoLight.Location = new System.Drawing.Point(97, 237);
+            this.textBoxLogoLight.Name = "textBoxLogoLight";
+            this.textBoxLogoLight.ReadOnly = true;
+            this.textBoxLogoLight.Size = new System.Drawing.Size(56, 20);
+            this.textBoxLogoLight.TabIndex = 25;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(17, 120);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 13);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Taxi:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(17, 240);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(39, 13);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "Logo:";
+            // 
+            // textBoxCabinLight
+            // 
+            this.textBoxCabinLight.Location = new System.Drawing.Point(97, 207);
+            this.textBoxCabinLight.Name = "textBoxCabinLight";
+            this.textBoxCabinLight.ReadOnly = true;
+            this.textBoxCabinLight.Size = new System.Drawing.Size(56, 20);
+            this.textBoxCabinLight.TabIndex = 23;
+            // 
+            // textBoxPanelLight
+            // 
+            this.textBoxPanelLight.Location = new System.Drawing.Point(97, 173);
+            this.textBoxPanelLight.Name = "textBoxPanelLight";
+            this.textBoxPanelLight.ReadOnly = true;
+            this.textBoxPanelLight.Size = new System.Drawing.Size(56, 20);
+            this.textBoxPanelLight.TabIndex = 25;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(17, 150);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(48, 13);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Strobe:";
+            // 
+            // textBoxStrobeLight
+            // 
+            this.textBoxStrobeLight.Location = new System.Drawing.Point(97, 143);
+            this.textBoxStrobeLight.Name = "textBoxStrobeLight";
+            this.textBoxStrobeLight.ReadOnly = true;
+            this.textBoxStrobeLight.Size = new System.Drawing.Size(56, 20);
+            this.textBoxStrobeLight.TabIndex = 23;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(17, 180);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(43, 13);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "Panel:";
+            // 
+            // textBoxTaxiLight
+            // 
+            this.textBoxTaxiLight.Location = new System.Drawing.Point(97, 113);
+            this.textBoxTaxiLight.Name = "textBoxTaxiLight";
+            this.textBoxTaxiLight.ReadOnly = true;
+            this.textBoxTaxiLight.Size = new System.Drawing.Size(56, 20);
+            this.textBoxTaxiLight.TabIndex = 21;
+            // 
+            // Nav
+            // 
+            this.Nav.AutoSize = true;
+            this.Nav.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Nav.Location = new System.Drawing.Point(17, 30);
+            this.Nav.Name = "Nav";
+            this.Nav.Size = new System.Drawing.Size(34, 13);
+            this.Nav.TabIndex = 14;
+            this.Nav.Text = "Nav:";
+            // 
+            // textBoxLandingLight
+            // 
+            this.textBoxLandingLight.Location = new System.Drawing.Point(97, 83);
+            this.textBoxLandingLight.Name = "textBoxLandingLight";
+            this.textBoxLandingLight.ReadOnly = true;
+            this.textBoxLandingLight.Size = new System.Drawing.Size(56, 20);
+            this.textBoxLandingLight.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(17, 60);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Beacon:";
+            // 
+            // textBoxBeaconLight
+            // 
+            this.textBoxBeaconLight.Location = new System.Drawing.Point(97, 53);
+            this.textBoxBeaconLight.Name = "textBoxBeaconLight";
+            this.textBoxBeaconLight.ReadOnly = true;
+            this.textBoxBeaconLight.Size = new System.Drawing.Size(56, 20);
+            this.textBoxBeaconLight.TabIndex = 17;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(17, 90);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Landing:";
+            // 
+            // textBoxNavLight
+            // 
+            this.textBoxNavLight.Location = new System.Drawing.Point(97, 27);
+            this.textBoxNavLight.Name = "textBoxNavLight";
+            this.textBoxNavLight.ReadOnly = true;
+            this.textBoxNavLight.Size = new System.Drawing.Size(56, 20);
+            this.textBoxNavLight.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(36, 111);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Avionics Master:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(36, 78);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(108, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Master Alternator:";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(90, 81);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(36, 45);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "For future expansion";
+            this.label5.Size = new System.Drawing.Size(93, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Master Battery:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBoxMasterAlt);
+            this.groupBox2.Controls.Add(this.textBoxMasterBattery);
+            this.groupBox2.Controls.Add(this.textBoxAvionicsMaster);
+            this.groupBox2.Location = new System.Drawing.Point(19, 18);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(210, 124);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Power";
+            // 
+            // textBoxMasterAlt
+            // 
+            this.textBoxMasterAlt.Location = new System.Drawing.Point(131, 60);
+            this.textBoxMasterAlt.Name = "textBoxMasterAlt";
+            this.textBoxMasterAlt.ReadOnly = true;
+            this.textBoxMasterAlt.Size = new System.Drawing.Size(56, 20);
+            this.textBoxMasterAlt.TabIndex = 11;
+            // 
+            // textBoxMasterBattery
+            // 
+            this.textBoxMasterBattery.Location = new System.Drawing.Point(131, 27);
+            this.textBoxMasterBattery.Name = "textBoxMasterBattery";
+            this.textBoxMasterBattery.ReadOnly = true;
+            this.textBoxMasterBattery.Size = new System.Drawing.Size(56, 20);
+            this.textBoxMasterBattery.TabIndex = 9;
+            // 
+            // textBoxAvionicsMaster
+            // 
+            this.textBoxAvionicsMaster.Location = new System.Drawing.Point(131, 93);
+            this.textBoxAvionicsMaster.Name = "textBoxAvionicsMaster";
+            this.textBoxAvionicsMaster.ReadOnly = true;
+            this.textBoxAvionicsMaster.Size = new System.Drawing.Size(56, 20);
+            this.textBoxAvionicsMaster.TabIndex = 13;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(17, 297);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Recognition:";
+            // 
+            // textBoxRecognitionLight
+            // 
+            this.textBoxRecognitionLight.Location = new System.Drawing.Point(97, 294);
+            this.textBoxRecognitionLight.Name = "textBoxRecognitionLight";
+            this.textBoxRecognitionLight.ReadOnly = true;
+            this.textBoxRecognitionLight.Size = new System.Drawing.Size(56, 20);
+            this.textBoxRecognitionLight.TabIndex = 29;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(17, 271);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(40, 13);
+            this.label16.TabIndex = 28;
+            this.label16.Text = "Wing:";
+            // 
+            // textBox2WingLight
+            // 
+            this.textBox2WingLight.Location = new System.Drawing.Point(97, 264);
+            this.textBox2WingLight.Name = "textBox2WingLight";
+            this.textBox2WingLight.ReadOnly = true;
+            this.textBox2WingLight.Size = new System.Drawing.Size(56, 20);
+            this.textBox2WingLight.TabIndex = 27;
             // 
             // MainForm
             // 
@@ -837,8 +1136,6 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxOther.ResumeLayout(false);
@@ -851,6 +1148,12 @@
             this.groupFuel.PerformLayout();
             this.groupBoxRadio.ResumeLayout(false);
             this.groupBoxRadio.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -927,7 +1230,34 @@
         private System.Windows.Forms.Label labelStandBy;
         private System.Windows.Forms.Label labelActive;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBoxLogoLight;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBoxCabinLight;
+        private System.Windows.Forms.TextBox textBoxPanelLight;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBoxStrobeLight;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBoxTaxiLight;
+        private System.Windows.Forms.Label Nav;
+        private System.Windows.Forms.TextBox textBoxLandingLight;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxBeaconLight;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxNavLight;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBoxMasterAlt;
+        private System.Windows.Forms.TextBox textBoxMasterBattery;
+        private System.Windows.Forms.TextBox textBoxAvionicsMaster;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxRecognitionLight;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox2WingLight;
     }
 }
 

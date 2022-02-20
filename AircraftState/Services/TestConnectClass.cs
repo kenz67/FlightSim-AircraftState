@@ -99,7 +99,7 @@ namespace AircraftState.Services
             db.SaveData(saveName, data);
         }
 
-        public void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation)
+        public void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation, bool sendExtended)
         {
             //nothing for test mode here
         }

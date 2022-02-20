@@ -41,6 +41,19 @@ namespace AircraftState.Models
         public bool masterAlternator;
         public bool masterAvionics;
 
+        public bool lightNav;
+        public bool lightBeacon;
+        public bool lightLanding;
+        public bool lightTaxi;
+        public bool lightStrobe;
+        public bool lightPanel;
+        public bool lightRecognition;
+        public bool lightWing;
+        public bool lightCabin;
+        public bool lightLogo;
+
+        public bool junk;
+
         //FLAPS HANDLE INDEX	//settable
         public bool validData;
     }

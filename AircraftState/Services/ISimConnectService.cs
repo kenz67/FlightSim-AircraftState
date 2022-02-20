@@ -17,6 +17,6 @@ namespace AircraftState.Services
 
         void SaveDataToDb(string SaveName);
 
-        void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation);
+        void SendDataToSim(PlaneData data, bool sendFuel, bool sendLocation, bool sendExtended);
     }
 }

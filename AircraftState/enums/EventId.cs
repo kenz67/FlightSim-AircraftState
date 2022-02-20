@@ -33,5 +33,24 @@
 
         COM_STBY_RADIO_SWAP,
         // Pause
+
+        //Lights
+        NAV_LIGHT,
+
+        BEACON_LIGHT,
+        LANDING_LIGHT,
+        TAXI_LIGHT,
+        STROBE_LIGHT,
+        PANEL_LIGHT,
+        RECOGNITION_LIGHT,
+        WING_LIGHT,
+        CABIN_LIGHT,
+        LOGO_LIGHT,
+
+        //Power
+        MASTER_BATTERY,
+
+        MASTER_ALTERNATOR,
+        AVIONICS_MASTER,
     }
 }
