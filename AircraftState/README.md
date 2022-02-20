@@ -21,6 +21,7 @@ Read and save MSFS aircraft state and apply to next flight
 ## Screenshots
 
 ![Main Page](https://raw.githubusercontent.com/kenz67/FlightSim-AircraftState/master/AircraftState/docs/MainPage.png)
+![Extedned Page](https://raw.githubusercontent.com/kenz67/FlightSim-AircraftState/master/AircraftState/docs/Extended.png)
 
 ![Send To Sim Page](https://raw.githubusercontent.com/kenz67/FlightSim-AircraftState/master/AircraftState/docs/SendToSim.png)
 ## Installation
