@@ -27,8 +27,8 @@ namespace AircraftState.Forms
             InitializeComponent();
 
             // this.BackColor = Color.White;
-            //SimConnect = new SimConnectService(this);
-            SimConnect = new TestConnectClass(this);
+            SimConnect = new SimConnectService(this);
+            //SimConnect = new TestConnectClass(this);
         }
 
         private void Form1_Load(object sender, EventArgs e)
