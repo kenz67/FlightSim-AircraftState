@@ -100,6 +100,10 @@
             this.labelActive = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxRecognitionLight = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox2WingLight = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxLogoLight = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -123,10 +127,8 @@
             this.textBoxMasterAlt = new System.Windows.Forms.TextBox();
             this.textBoxMasterBattery = new System.Windows.Forms.TextBox();
             this.textBoxAvionicsMaster = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxRecognitionLight = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox2WingLight = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tbBatteryVolts = new System.Windows.Forms.TextBox();
             this.statusStripVersion.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -155,6 +157,7 @@
             // 
             // statusStripVersion
             // 
+            this.statusStripVersion.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStripVersion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelConnected,
             this.toolStripStatusAutoSave});
@@ -241,6 +244,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.helpToolStripMenuItem});
@@ -366,6 +370,8 @@
             // 
             // groupBoxOther
             // 
+            this.groupBoxOther.Controls.Add(this.tbBatteryVolts);
+            this.groupBoxOther.Controls.Add(this.label17);
             this.groupBoxOther.Controls.Add(this.textBoxOtherHeadingBug);
             this.groupBoxOther.Controls.Add(this.textBoxOtherKolhsman);
             this.groupBoxOther.Controls.Add(this.labelOtherHeadingBug);
@@ -373,7 +379,7 @@
             this.groupBoxOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxOther.Location = new System.Drawing.Point(493, 11);
             this.groupBoxOther.Name = "groupBoxOther";
-            this.groupBoxOther.Size = new System.Drawing.Size(205, 107);
+            this.groupBoxOther.Size = new System.Drawing.Size(205, 124);
             this.groupBoxOther.TabIndex = 30;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "Other";
@@ -865,6 +871,42 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Lights";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(17, 297);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Recognition:";
+            // 
+            // textBoxRecognitionLight
+            // 
+            this.textBoxRecognitionLight.Location = new System.Drawing.Point(97, 294);
+            this.textBoxRecognitionLight.Name = "textBoxRecognitionLight";
+            this.textBoxRecognitionLight.ReadOnly = true;
+            this.textBoxRecognitionLight.Size = new System.Drawing.Size(56, 20);
+            this.textBoxRecognitionLight.TabIndex = 29;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(17, 271);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(40, 13);
+            this.label16.TabIndex = 28;
+            this.label16.Text = "Wing:";
+            // 
+            // textBox2WingLight
+            // 
+            this.textBox2WingLight.Location = new System.Drawing.Point(97, 264);
+            this.textBox2WingLight.Name = "textBox2WingLight";
+            this.textBox2WingLight.ReadOnly = true;
+            this.textBox2WingLight.Size = new System.Drawing.Size(56, 20);
+            this.textBox2WingLight.TabIndex = 27;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1046,7 +1088,7 @@
             this.groupBox2.Controls.Add(this.textBoxAvionicsMaster);
             this.groupBox2.Location = new System.Drawing.Point(19, 18);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(210, 124);
+            this.groupBox2.Size = new System.Drawing.Size(210, 144);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Power";
@@ -1075,41 +1117,23 @@
             this.textBoxAvionicsMaster.Size = new System.Drawing.Size(56, 20);
             this.textBoxAvionicsMaster.TabIndex = 13;
             // 
-            // label8
+            // label17
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(17, 297);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 13);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "Recognition:";
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(14, 88);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(77, 13);
+            this.label17.TabIndex = 23;
+            this.label17.Text = "Baterry Volt:";
             // 
-            // textBoxRecognitionLight
+            // tbBatteryVolts
             // 
-            this.textBoxRecognitionLight.Location = new System.Drawing.Point(97, 294);
-            this.textBoxRecognitionLight.Name = "textBoxRecognitionLight";
-            this.textBoxRecognitionLight.ReadOnly = true;
-            this.textBoxRecognitionLight.Size = new System.Drawing.Size(56, 20);
-            this.textBoxRecognitionLight.TabIndex = 29;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(17, 271);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(40, 13);
-            this.label16.TabIndex = 28;
-            this.label16.Text = "Wing:";
-            // 
-            // textBox2WingLight
-            // 
-            this.textBox2WingLight.Location = new System.Drawing.Point(97, 264);
-            this.textBox2WingLight.Name = "textBox2WingLight";
-            this.textBox2WingLight.ReadOnly = true;
-            this.textBox2WingLight.Size = new System.Drawing.Size(56, 20);
-            this.textBox2WingLight.TabIndex = 27;
+            this.tbBatteryVolts.Location = new System.Drawing.Point(107, 85);
+            this.tbBatteryVolts.Name = "tbBatteryVolts";
+            this.tbBatteryVolts.ReadOnly = true;
+            this.tbBatteryVolts.Size = new System.Drawing.Size(56, 20);
+            this.tbBatteryVolts.TabIndex = 24;
             // 
             // MainForm
             // 
@@ -1258,6 +1282,8 @@
         private System.Windows.Forms.TextBox textBoxRecognitionLight;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox2WingLight;
+        private System.Windows.Forms.TextBox tbBatteryVolts;
+        private System.Windows.Forms.Label label17;
     }
 }
 

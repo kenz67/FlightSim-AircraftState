@@ -69,7 +69,12 @@ namespace AircraftState.Services
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "GENERAL ENG MASTER ALTERNATOR", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "AVIONICS MASTER SWITCH", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
-                //Data being written
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "ELECTRICAL BATTERY VOLTAGE", "volts", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+
+                //////////////////
+                //Settable Data
+                //////////////////
+
                 //Fuel
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneFuelData, "FUEL TANK LEFT MAIN QUANTITY", "gallons", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneFuelData, "FUEL TANK RIGHT MAIN QUANTITY", "gallons", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
@@ -85,6 +90,9 @@ namespace AircraftState.Services
 
                 //Capture the name of the plane
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimEnvironmentDataStructure, "Title", null, SIMCONNECT_DATATYPE.STRING256, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+
+                //Power
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPowerData, "ELECTRICAL BATTERY VOLTAGE", "volts", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
                 //Lights
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "LIGHT NAV ON", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
@@ -148,6 +156,7 @@ namespace AircraftState.Services
                 sim.MapClientEventToSimEvent(EVENT_IDS.CABIN_LIGHT, "TOGGLE_CABIN_LIGHTS");
                 sim.MapClientEventToSimEvent(EVENT_IDS.LOGO_LIGHT, "TOGGLE_LOGO_LIGHTS");
 
+                sim.MapClientEventToSimEvent(EVENT_IDS.ELECTRICAL_BATTERY_BUS_VOLTAGE, "ELECTRICAL_BATTERY_BUS_VOLTAGE");
                 //sim.SubscribeToSystemEvent(MY_SIMCONENCT_EVENT_IDS.Pause, "Pause");
             }
             catch /* (COMException ex) */
@@ -173,9 +182,10 @@ namespace AircraftState.Services
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.NAV2_STBY_SET_HZ, ConvertNav(data.nav2Standby), GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
 
             //ADF - note, couldn't get active ADF to set, so set standby and swap
+            var tmpStandby = data.adfStandby;
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.ADF_STBY_SET, ConvertAdf(data.adfActive), GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.ADF1_RADIO_SWAP, 0, GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
-            sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.ADF_STBY_SET, ConvertAdf(data.adfStandby), GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+            sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.ADF_STBY_SET, ConvertAdf(tmpStandby), GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
 
             //OBS, ADF Card
             sim.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, EVENT_IDS.OBS1, (uint)data.obs1, GROUPID.MAX, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
@@ -222,6 +232,10 @@ namespace AircraftState.Services
                     break;
             }
 
+            var batteryData = new BatteryVoltage { batteryVoltage = data.batteryVoltage };
+            sim.SetDataOnSimObject(DATA_DEFINITIONS.SimPowerData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, batteryData);
+
+
             if (sendExtended)
             {
                 //Power
@@ -239,9 +253,9 @@ namespace AircraftState.Services
                 TurnOn(data.lightRecognition, EVENT_IDS.RECOGNITION_LIGHT);
                 TurnOn(data.lightWing, EVENT_IDS.WING_LIGHT);
                 TurnOn(data.lightCabin, EVENT_IDS.CABIN_LIGHT);
-                TurnOn(data.lightLogo, EVENT_IDS.LOGO_LIGHT);
+                TurnOn(data.lightLogo, EVENT_IDS.LOGO_LIGHT);               
             }
-            //Updateable variables
+        
 
             //Fuel
             if (sendFuel)
@@ -256,11 +270,6 @@ namespace AircraftState.Services
                 var locationData = new LocationData { altitude = data.altitude, heading = data.heading, latitude = data.latitude, longitude = data.longitude };
                 sim.SetDataOnSimObject(DATA_DEFINITIONS.SimPlaneLocationData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, locationData);
             }            //Fuel
-            if (sendFuel)
-            {
-                var fuelData = new FuelData { fuelLeft = data.fuelLeft, fuelRight = data.fuelRight };
-                sim.SetDataOnSimObject(DATA_DEFINITIONS.SimPlaneFuelData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, fuelData);
-            }
 
             //Trim
             var trimData = new TrimData { elevatorTrim = data.elevtorTrim };

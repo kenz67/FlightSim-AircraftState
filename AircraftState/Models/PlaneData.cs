@@ -41,6 +41,8 @@ namespace AircraftState.Models
         public bool masterAlternator;
         public bool masterAvionics;
 
+        public double batteryVoltage;  //settable
+
         public bool lightNav;
         public bool lightBeacon;
         public bool lightLanding;
@@ -50,7 +52,7 @@ namespace AircraftState.Models
         public bool lightRecognition;
         public bool lightWing;
         public bool lightCabin;
-        public bool lightLogo;
+        public bool lightLogo;     
 
         public bool junk;
 

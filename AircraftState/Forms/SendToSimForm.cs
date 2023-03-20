@@ -109,6 +109,12 @@ namespace AircraftState.Forms
             textBoxFlaps.Text = PlaneData.flapsIndex.ToString();
             var nodeDown = Math.Round(PlaneData.elevtorTrim, 2) < 0 ? "Nose Down" : String.Empty;
             textBoxTrim.Text = $"{Math.Abs(PlaneData.elevtorTrim):N2} {(Math.Round(PlaneData.elevtorTrim, 2) > 0 ? "Nose Up" : nodeDown)}";
+
+            if (PlaneData.batteryVoltage == 0)
+            {
+                PlaneData.batteryVoltage = 25;
+            }
+            tbBatteryVolts.Text = PlaneData.batteryVoltage.ToString();
         }
 
         private void ExtendedTab(PlaneData planeData)

@@ -1,0 +1,11 @@
+Add New Setting
+
+	Add to MainForm.cs
+	Add to EventId.cs
+	Add to SimConnectService.cs
+		AddToDataDefinition
+		MapClientEventToSimEvent
+	Add to PlaneData.cs
+	Set value in MainForm
+	Add to Send Form
+	Set value in SendForm (check for null)

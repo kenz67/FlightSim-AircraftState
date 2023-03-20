@@ -49,8 +49,8 @@
 
         //Power
         MASTER_BATTERY,
-
         MASTER_ALTERNATOR,
         AVIONICS_MASTER,
+        ELECTRICAL_BATTERY_BUS_VOLTAGE,
     }
 }

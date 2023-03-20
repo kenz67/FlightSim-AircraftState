@@ -162,6 +162,7 @@ namespace AircraftState.Forms
             textBoxLogoLight.Text = Formatter.GetOnOff(planeData.lightLogo);
             textBox2WingLight.Text = Formatter.GetOnOff(planeData.lightWing);
             textBoxRecognitionLight.Text = Formatter.GetOnOff(planeData.lightRecognition);
+            tbBatteryVolts.Text = planeData.batteryVoltage.ToString("N2");
         }
 
         public void ShowSimEnvironmentDataOnForm(MasterData envData)
@@ -258,5 +259,6 @@ namespace AircraftState.Forms
             var helpDialog = new Help();
             helpDialog.ShowDialog();
         }
+
     }
 }

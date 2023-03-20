@@ -50,6 +50,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelOtherParkBreak = new System.Windows.Forms.Label();
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
+            this.tbBatteryVolts = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.textBoxOtherHeadingBug = new System.Windows.Forms.TextBox();
             this.textBoxOtherKolhsman = new System.Windows.Forms.TextBox();
             this.labelOtherHeadingBug = new System.Windows.Forms.Label();
@@ -345,6 +347,8 @@
             // 
             // groupBoxOther
             // 
+            this.groupBoxOther.Controls.Add(this.tbBatteryVolts);
+            this.groupBoxOther.Controls.Add(this.label18);
             this.groupBoxOther.Controls.Add(this.textBoxOtherHeadingBug);
             this.groupBoxOther.Controls.Add(this.textBoxOtherKolhsman);
             this.groupBoxOther.Controls.Add(this.labelOtherHeadingBug);
@@ -352,10 +356,28 @@
             this.groupBoxOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxOther.Location = new System.Drawing.Point(508, 6);
             this.groupBoxOther.Name = "groupBoxOther";
-            this.groupBoxOther.Size = new System.Drawing.Size(205, 107);
+            this.groupBoxOther.Size = new System.Drawing.Size(205, 119);
             this.groupBoxOther.TabIndex = 31;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "Other";
+            // 
+            // tbBatteryVolts
+            // 
+            this.tbBatteryVolts.Location = new System.Drawing.Point(121, 87);
+            this.tbBatteryVolts.Name = "tbBatteryVolts";
+            this.tbBatteryVolts.ReadOnly = true;
+            this.tbBatteryVolts.Size = new System.Drawing.Size(56, 20);
+            this.tbBatteryVolts.TabIndex = 25;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(27, 90);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(77, 13);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "Baterry Volt:";
             // 
             // textBoxOtherHeadingBug
             // 
@@ -1246,6 +1268,8 @@
         private System.Windows.Forms.TextBox textBoxMasterBattery;
         private System.Windows.Forms.TextBox textBoxAvionicsMaster;
         private System.Windows.Forms.CheckBox checkBoxSendExtendedData;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tbBatteryVolts;
     }
 }
 
