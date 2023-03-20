@@ -6,5 +6,7 @@ namespace AircraftState.Models
     public struct TrimData
     {
         public double elevatorTrim;    //settable
+        public double rudderTrim;
+        public double aileronTrim;
     }
 }

@@ -63,6 +63,8 @@ namespace AircraftState.Services
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "AUTOPILOT HEADING LOCK DIR", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "FLAPS HANDLE INDEX", "number", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "ELEVATOR TRIM POSITION", "radians", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "RUDDER TRIM PCT", "percent", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "AILERON TRIM PCT", "percent", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
                 //key on these to trigger db save. all 3 must be turned on together, then all 3 off together
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimPlaneDataStructure, "ELECTRICAL MASTER BATTERY", "bool", SIMCONNECT_DATATYPE.INT32, 0.0f, SimConnect.SIMCONNECT_UNUSED);
@@ -87,6 +89,8 @@ namespace AircraftState.Services
 
                 //Trim
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimTrimData, "ELEVATOR TRIM POSITION", "radians", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimTrimData, "RUDDER TRIM PCT", "percent", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                sim.AddToDataDefinition(DATA_DEFINITIONS.SimTrimData, "AILERON TRIM PCT", "percent", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
 
                 //Capture the name of the plane
                 sim.AddToDataDefinition(DATA_DEFINITIONS.SimEnvironmentDataStructure, "Title", null, SIMCONNECT_DATATYPE.STRING256, 0.0f, SimConnect.SIMCONNECT_UNUSED);
@@ -272,7 +276,7 @@ namespace AircraftState.Services
             }            //Fuel
 
             //Trim
-            var trimData = new TrimData { elevatorTrim = data.elevtorTrim };
+            var trimData = new TrimData { elevatorTrim = data.elevtorTrim, rudderTrim = data.rudderTrim, aileronTrim = data. aileronTrim };
             sim.SetDataOnSimObject(DATA_DEFINITIONS.SimTrimData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, trimData);
         }
 

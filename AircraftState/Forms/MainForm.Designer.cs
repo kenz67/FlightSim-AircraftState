@@ -46,6 +46,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxRudderTrim = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.textBoxTrim = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxOtherParkingBrake = new System.Windows.Forms.TextBox();
@@ -53,6 +55,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelOtherParkBreak = new System.Windows.Forms.Label();
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
+            this.tbBatteryVolts = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.textBoxOtherHeadingBug = new System.Windows.Forms.TextBox();
             this.textBoxOtherKolhsman = new System.Windows.Forms.TextBox();
             this.labelOtherHeadingBug = new System.Windows.Forms.Label();
@@ -127,8 +131,8 @@
             this.textBoxMasterAlt = new System.Windows.Forms.TextBox();
             this.textBoxMasterBattery = new System.Windows.Forms.TextBox();
             this.textBoxAvionicsMaster = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.tbBatteryVolts = new System.Windows.Forms.TextBox();
+            this.textBoxAileronTrim = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.statusStripVersion.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -147,7 +151,7 @@
             // buttonSend
             // 
             this.buttonSend.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonSend.Location = new System.Drawing.Point(30, 505);
+            this.buttonSend.Location = new System.Drawing.Point(30, 510);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(92, 23);
             this.buttonSend.TabIndex = 22;
@@ -183,7 +187,7 @@
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(648, 505);
+            this.buttonConnect.Location = new System.Drawing.Point(648, 510);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(92, 23);
             this.buttonConnect.TabIndex = 25;
@@ -193,7 +197,7 @@
             // 
             // buttonSaveToDb
             // 
-            this.buttonSaveToDb.Location = new System.Drawing.Point(135, 505);
+            this.buttonSaveToDb.Location = new System.Drawing.Point(135, 510);
             this.buttonSaveToDb.Name = "buttonSaveToDb";
             this.buttonSaveToDb.Size = new System.Drawing.Size(92, 23);
             this.buttonSaveToDb.TabIndex = 26;
@@ -278,7 +282,7 @@
             this.tabControl1.Location = new System.Drawing.Point(24, 77);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(720, 415);
+            this.tabControl1.Size = new System.Drawing.Size(720, 427);
             this.tabControl1.TabIndex = 29;
             // 
             // tabPage1
@@ -293,12 +297,16 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(712, 389);
+            this.tabPage1.Size = new System.Drawing.Size(712, 401);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Data";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxAileronTrim);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.textBoxRudderTrim);
+            this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.textBoxTrim);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.textBoxOtherParkingBrake);
@@ -308,17 +316,36 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(215, 223);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(189, 127);
+            this.groupBox1.Size = new System.Drawing.Size(189, 172);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Plane Configuration";
             // 
+            // textBoxRudderTrim
+            // 
+            this.textBoxRudderTrim.Location = new System.Drawing.Point(75, 116);
+            this.textBoxRudderTrim.Name = "textBoxRudderTrim";
+            this.textBoxRudderTrim.ReadOnly = true;
+            this.textBoxRudderTrim.Size = new System.Drawing.Size(104, 20);
+            this.textBoxRudderTrim.TabIndex = 16;
+            this.textBoxRudderTrim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(7, 121);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(62, 13);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "Rud Trim:";
+            // 
             // textBoxTrim
             // 
-            this.textBoxTrim.Location = new System.Drawing.Point(76, 90);
+            this.textBoxTrim.Location = new System.Drawing.Point(75, 90);
             this.textBoxTrim.Name = "textBoxTrim";
             this.textBoxTrim.ReadOnly = true;
-            this.textBoxTrim.Size = new System.Drawing.Size(103, 20);
+            this.textBoxTrim.Size = new System.Drawing.Size(104, 20);
             this.textBoxTrim.TabIndex = 14;
             this.textBoxTrim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -383,6 +410,24 @@
             this.groupBoxOther.TabIndex = 30;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "Other";
+            // 
+            // tbBatteryVolts
+            // 
+            this.tbBatteryVolts.Location = new System.Drawing.Point(107, 85);
+            this.tbBatteryVolts.Name = "tbBatteryVolts";
+            this.tbBatteryVolts.ReadOnly = true;
+            this.tbBatteryVolts.Size = new System.Drawing.Size(56, 20);
+            this.tbBatteryVolts.TabIndex = 24;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(14, 88);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(77, 13);
+            this.label17.TabIndex = 23;
+            this.label17.Text = "Baterry Volt:";
             // 
             // textBoxOtherHeadingBug
             // 
@@ -1117,23 +1162,24 @@
             this.textBoxAvionicsMaster.Size = new System.Drawing.Size(56, 20);
             this.textBoxAvionicsMaster.TabIndex = 13;
             // 
-            // label17
+            // textBoxAileronTrim
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(14, 88);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(77, 13);
-            this.label17.TabIndex = 23;
-            this.label17.Text = "Baterry Volt:";
+            this.textBoxAileronTrim.Location = new System.Drawing.Point(76, 143);
+            this.textBoxAileronTrim.Name = "textBoxAileronTrim";
+            this.textBoxAileronTrim.ReadOnly = true;
+            this.textBoxAileronTrim.Size = new System.Drawing.Size(104, 20);
+            this.textBoxAileronTrim.TabIndex = 18;
+            this.textBoxAileronTrim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // tbBatteryVolts
+            // label19
             // 
-            this.tbBatteryVolts.Location = new System.Drawing.Point(107, 85);
-            this.tbBatteryVolts.Name = "tbBatteryVolts";
-            this.tbBatteryVolts.ReadOnly = true;
-            this.tbBatteryVolts.Size = new System.Drawing.Size(56, 20);
-            this.tbBatteryVolts.TabIndex = 24;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(8, 148);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(64, 13);
+            this.label19.TabIndex = 17;
+            this.label19.Text = "Ailer Trim:";
             // 
             // MainForm
             // 
@@ -1284,6 +1330,10 @@
         private System.Windows.Forms.TextBox textBox2WingLight;
         private System.Windows.Forms.TextBox tbBatteryVolts;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBoxRudderTrim;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBoxAileronTrim;
+        private System.Windows.Forms.Label label19;
     }
 }
 

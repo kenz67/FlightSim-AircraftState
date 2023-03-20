@@ -36,6 +36,8 @@ namespace AircraftState.Models
 
         public int flapsIndex;
         public double elevtorTrim;
+        public double rudderTrim;
+        public double aileronTrim;
 
         public bool masterBattery;
         public bool masterAlternator;

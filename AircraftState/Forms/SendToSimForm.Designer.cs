@@ -43,6 +43,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxRudderTrim = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxTrim = new System.Windows.Forms.TextBox();
             this.textBoxOtherParkingBrake = new System.Windows.Forms.TextBox();
@@ -127,6 +129,8 @@
             this.textBoxMasterBattery = new System.Windows.Forms.TextBox();
             this.textBoxAvionicsMaster = new System.Windows.Forms.TextBox();
             this.checkBoxSendExtendedData = new System.Windows.Forms.CheckBox();
+            this.textBoxAileronTrim = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -143,7 +147,7 @@
             // buttonSend
             // 
             this.buttonSend.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonSend.Location = new System.Drawing.Point(46, 521);
+            this.buttonSend.Location = new System.Drawing.Point(46, 552);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(75, 37);
             this.buttonSend.TabIndex = 22;
@@ -182,7 +186,7 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(163, 520);
+            this.buttonCancel.Location = new System.Drawing.Point(163, 551);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 37);
             this.buttonCancel.TabIndex = 24;
@@ -193,7 +197,7 @@
             // checkBoxHide
             // 
             this.checkBoxHide.AutoSize = true;
-            this.checkBoxHide.Location = new System.Drawing.Point(46, 488);
+            this.checkBoxHide.Location = new System.Drawing.Point(46, 519);
             this.checkBoxHide.Name = "checkBoxHide";
             this.checkBoxHide.Size = new System.Drawing.Size(194, 17);
             this.checkBoxHide.TabIndex = 25;
@@ -203,7 +207,7 @@
             // checkBoxSendFuel
             // 
             this.checkBoxSendFuel.AutoSize = true;
-            this.checkBoxSendFuel.Location = new System.Drawing.Point(298, 498);
+            this.checkBoxSendFuel.Location = new System.Drawing.Point(298, 529);
             this.checkBoxSendFuel.Name = "checkBoxSendFuel";
             this.checkBoxSendFuel.Size = new System.Drawing.Size(100, 17);
             this.checkBoxSendFuel.TabIndex = 29;
@@ -213,7 +217,7 @@
             // checkBoxSendLocation
             // 
             this.checkBoxSendLocation.AutoSize = true;
-            this.checkBoxSendLocation.Location = new System.Drawing.Point(298, 524);
+            this.checkBoxSendLocation.Location = new System.Drawing.Point(298, 555);
             this.checkBoxSendLocation.Name = "checkBoxSendLocation";
             this.checkBoxSendLocation.Size = new System.Drawing.Size(121, 17);
             this.checkBoxSendLocation.TabIndex = 30;
@@ -256,7 +260,7 @@
             this.tabControl1.Location = new System.Drawing.Point(38, 97);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(750, 383);
+            this.tabControl1.Size = new System.Drawing.Size(750, 416);
             this.tabControl1.TabIndex = 34;
             // 
             // tabPage1
@@ -271,12 +275,16 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(742, 357);
+            this.tabPage1.Size = new System.Drawing.Size(742, 390);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Data";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxAileronTrim);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.textBoxRudderTrim);
+            this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.textBoxTrim);
             this.groupBox1.Controls.Add(this.textBoxOtherParkingBrake);
@@ -286,10 +294,29 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(232, 210);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(188, 127);
+            this.groupBox1.Size = new System.Drawing.Size(188, 166);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Plane Configuration";
+            // 
+            // textBoxRudderTrim
+            // 
+            this.textBoxRudderTrim.Location = new System.Drawing.Point(88, 108);
+            this.textBoxRudderTrim.Name = "textBoxRudderTrim";
+            this.textBoxRudderTrim.ReadOnly = true;
+            this.textBoxRudderTrim.Size = new System.Drawing.Size(90, 20);
+            this.textBoxRudderTrim.TabIndex = 19;
+            this.textBoxRudderTrim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(6, 114);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(80, 13);
+            this.label19.TabIndex = 18;
+            this.label19.Text = "Rudder Trim:";
             // 
             // label4
             // 
@@ -303,10 +330,10 @@
             // 
             // textBoxTrim
             // 
-            this.textBoxTrim.Location = new System.Drawing.Point(75, 84);
+            this.textBoxTrim.Location = new System.Drawing.Point(88, 84);
             this.textBoxTrim.Name = "textBoxTrim";
             this.textBoxTrim.ReadOnly = true;
-            this.textBoxTrim.Size = new System.Drawing.Size(98, 20);
+            this.textBoxTrim.Size = new System.Drawing.Size(85, 20);
             this.textBoxTrim.TabIndex = 16;
             // 
             // textBoxOtherParkingBrake
@@ -1115,12 +1142,31 @@
             // checkBoxSendExtendedData
             // 
             this.checkBoxSendExtendedData.AutoSize = true;
-            this.checkBoxSendExtendedData.Location = new System.Drawing.Point(298, 547);
+            this.checkBoxSendExtendedData.Location = new System.Drawing.Point(298, 578);
             this.checkBoxSendExtendedData.Name = "checkBoxSendExtendedData";
             this.checkBoxSendExtendedData.Size = new System.Drawing.Size(125, 17);
             this.checkBoxSendExtendedData.TabIndex = 35;
             this.checkBoxSendExtendedData.Text = "Send Extended Data";
             this.checkBoxSendExtendedData.UseVisualStyleBackColor = true;
+            // 
+            // textBoxAileronTrim
+            // 
+            this.textBoxAileronTrim.Location = new System.Drawing.Point(74, 134);
+            this.textBoxAileronTrim.Name = "textBoxAileronTrim";
+            this.textBoxAileronTrim.ReadOnly = true;
+            this.textBoxAileronTrim.Size = new System.Drawing.Size(104, 20);
+            this.textBoxAileronTrim.TabIndex = 21;
+            this.textBoxAileronTrim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(6, 139);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(64, 13);
+            this.label20.TabIndex = 20;
+            this.label20.Text = "Ailer Trim:";
             // 
             // SendToSimForm
             // 
@@ -1128,7 +1174,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(800, 582);
+            this.ClientSize = new System.Drawing.Size(800, 608);
             this.Controls.Add(this.checkBoxSendExtendedData);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.buttonDeleteProfile);
@@ -1270,6 +1316,10 @@
         private System.Windows.Forms.CheckBox checkBoxSendExtendedData;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox tbBatteryVolts;
+        private System.Windows.Forms.TextBox textBoxRudderTrim;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBoxAileronTrim;
+        private System.Windows.Forms.Label label20;
     }
 }
 

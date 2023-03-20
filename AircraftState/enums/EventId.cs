@@ -52,5 +52,9 @@
         MASTER_ALTERNATOR,
         AVIONICS_MASTER,
         ELECTRICAL_BATTERY_BUS_VOLTAGE,
+
+        //Control
+        RUDDER_TRIM_PCT,
+        AILERON_TRIM_PCT
     }
 }

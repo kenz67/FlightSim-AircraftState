@@ -144,7 +144,11 @@ namespace AircraftState.Forms
             textBoxFlaps.Text = planeData.flapsIndex.ToString();
 
             var noseDown = Math.Round(planeData.elevtorTrim, 3) >= 0 ? string.Empty : "Nose Down";
+            var rudderLeft = Math.Round(planeData.rudderTrim, 1) >= 0 ? string.Empty : "% L";
+            var aileronLeft = Math.Round(planeData.aileronTrim, 1) >= 0 ? string.Empty : "% L";
             textBoxTrim.Text = $"{Math.Abs(planeData.elevtorTrim):N3} {(Math.Round(planeData.elevtorTrim, 3) > 0 ? "Nose Up" : noseDown) }";
+            textBoxRudderTrim.Text = $"{Math.Abs(planeData.rudderTrim):N3} {(Math.Round(planeData.rudderTrim, 1) > 0 ? "% R" : rudderLeft)}";
+            textBoxAileronTrim.Text = $"{Math.Abs(planeData.aileronTrim):N3} {(Math.Round(planeData.aileronTrim, 1) > 0 ? "% R" : aileronLeft)}";
         }
 
         private void UpdateExtendedTab(PlaneData planeData)
@@ -259,6 +263,5 @@ namespace AircraftState.Forms
             var helpDialog = new Help();
             helpDialog.ShowDialog();
         }
-
     }
 }

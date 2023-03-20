@@ -107,8 +107,14 @@ namespace AircraftState.Forms
             textBoxOtherKolhsman.Text = PlaneData.kohlsman.ToString("N2");
             textBoxOtherHeadingBug.Text = PlaneData.headingBug.ToString();
             textBoxFlaps.Text = PlaneData.flapsIndex.ToString();
+            
             var nodeDown = Math.Round(PlaneData.elevtorTrim, 2) < 0 ? "Nose Down" : String.Empty;
-            textBoxTrim.Text = $"{Math.Abs(PlaneData.elevtorTrim):N2} {(Math.Round(PlaneData.elevtorTrim, 2) > 0 ? "Nose Up" : nodeDown)}";
+            var rudderLeft = Math.Round(PlaneData.rudderTrim, 3) >= 0 ? string.Empty : "% Lft";
+            var aileronLeft = Math.Round(PlaneData.aileronTrim, 3) >= 0 ? string.Empty : "% Lft";
+
+            textBoxTrim.Text = $"{Math.Abs(PlaneData.elevtorTrim):N2} {(Math.Round(PlaneData.elevtorTrim, 2) > 0 ? "Nose Up" : nodeDown)}";            
+            textBoxRudderTrim.Text = $"{Math.Abs(PlaneData.rudderTrim):N3} {(Math.Round(PlaneData.rudderTrim, 1) > 0 ? "% Rgt" : rudderLeft)}";
+            textBoxAileronTrim.Text = $"{Math.Abs(PlaneData.aileronTrim):N3} {(Math.Round(PlaneData.aileronTrim, 1) > 0 ? "% Rgt" : aileronLeft)}";
 
             if (PlaneData.batteryVoltage == 0)
             {
